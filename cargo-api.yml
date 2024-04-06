@@ -1,0 +1,709 @@
+openapi: 3.0.0
+info:
+  title: Cargo Handling API
+  description: APIs for managing luggage, cargo containers, employees, ramp checklists, and checks
+  version: 1.0.0
+servers:
+  - url: http://api.example.com/v1
+paths:
+  /luggage:
+    get:
+      summary: Get all luggage items
+      parameters:
+        - name: status
+          in: query
+          description: Filter luggage items by status
+          schema:
+            type: string
+        - name: container_id
+          in: query
+          description: Filter luggage items by container ID
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Limit the number of results returned. Default is 10.
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Offset the results returned for pagination
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of luggage items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Luggage'
+    post:
+      summary: Create a new luggage item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewLuggage'
+      responses:
+        '201':
+          description: Luggage item created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Luggage'
+
+
+  /cargo-containers:
+    get:
+      summary: Get all cargo containers
+      parameters:
+        - name: status
+          in: query
+          description: Filter cargo containers by status
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Limit the number of results returned. Default is 10.
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          description: Offset the results returned for pagination
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of cargo containers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CargoContainer'
+    post:
+      summary: Create a new cargo container
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCargoContainer'
+      responses:
+        '201':
+          description: Cargo container created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CargoContainer'
+  /cargo-containers/{container_id}:
+    get:
+      summary: Get a specific cargo container by ID
+      parameters:
+        - name: container_id
+          in: path
+          description: ID of the cargo container to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cargo container details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CargoContainer'
+    put:
+      summary: Update a specific cargo container by ID
+      parameters:
+        - name: container_id
+          in: path
+          description: ID of the cargo container to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCargoContainer'
+      responses:
+        '200':
+          description: Cargo container updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CargoContainer'
+    delete:
+      summary: Delete a specific cargo container by ID
+      parameters:
+        - name: container_id
+          in: path
+          description: ID of the cargo container to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Cargo container deleted successfully
+
+  /employees:
+    get:
+      summary: Get all employees
+      responses:
+        '200':
+          description: List of employees
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+    post:
+      summary: Create a new employee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewEmployee'
+      responses:
+        '201':
+          description: Employee created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+  /employees/{employee_id}:
+    get:
+      summary: Get a specific employee by ID
+      parameters:
+        - name: employee_id
+          in: path
+          description: ID of the employee to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Employee details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+    put:
+      summary: Update a specific employee by ID
+      parameters:
+        - name: employee_id
+          in: path
+          description: ID of the employee to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewEmployee'
+      responses:
+        '200':
+          description: Employee updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+    delete:
+      summary: Delete a specific employee by ID
+      parameters:
+        - name: employee_id
+          in: path
+          description: ID of the employee to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Employee deleted successfully
+  /ramp-checklists:
+    get:
+      summary: Get all ramp checklists
+      responses:
+        '200':
+          description: List of ramp checklists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RampChecklist'
+    post:
+      summary: Create a new ramp checklist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewRampChecklist'
+      responses:
+        '201':
+          description: Ramp checklist created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RampChecklist'
+  /ramp-checklists/{list_id}:
+    get:
+      summary: Get a specific ramp checklist by ID
+      parameters:
+        - name: list_id
+          in: path
+          description: ID of the ramp checklist to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ramp checklist details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RampChecklist'
+    put:
+      summary: Update a specific ramp checklist by ID
+      parameters:
+        - name: list_id
+          in: path
+          description: ID of the ramp checklist to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewRampChecklist'
+      responses:
+        '200':
+          description: Ramp checklist updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RampChecklist'
+    delete:
+      summary: Delete a specific ramp checklist by ID
+      parameters:
+        - name: list_id
+          in: path
+          description: ID of the ramp checklist to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Ramp checklist deleted successfully
+  /checks:
+    get:
+      summary: Get all checks
+      responses:
+        '200':
+          description: List of checks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Check'
+    post:
+      summary: Create a new check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCheck'
+      responses:
+        '201':
+          description: Check created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check'
+  /checks/{check_id}:
+    get:
+      summary: Get a specific check by ID
+      parameters:
+        - name: check_id
+          in: path
+          description: ID of the check to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Check details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check'
+    put:
+      summary: Update a specific check by ID
+      parameters:
+        - name: check_id
+          in: path
+          description: ID of the check to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCheck'
+      responses:
+        '200':
+          description: Check updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check'
+    delete:
+      summary: Delete a specific check by ID
+      parameters:
+        - name: check_id
+          in: path
+          description: ID of the check to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Check deleted successfully
+  /standard-checks:
+    get:
+      summary: Get all standard checks
+      responses:
+        '200':
+          description: List of standard checks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Check'
+    post:
+      summary: Create a new standard check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCheck'
+      responses:
+        '201':
+          description: Standard check created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check'
+  /safety-checks:
+    get:
+      summary: Get all safety checks
+      responses:
+        '200':
+          description: List of safety checks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Check'
+    post:
+      summary: Create a new safety check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewCheck'
+      responses:
+        '201':
+          description: Safety check created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check'
+  /fire-line:
+    get:
+      summary: Get all fire line checks
+      responses:
+        '200':
+          description: List of fire line checks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FireLine'
+    post:
+      summary: Create a new fire line check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewFireLine'
+      responses:
+        '201':
+          description: Fire line check created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FireLine'
+
+  /fire-line/{id}:
+    get:
+      summary: Get a specific fire line check by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the fire line check to retrieve
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Fire line check details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FireLine'
+    put:
+      summary: Update a specific fire line check by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the fire line check to update
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewFireLine'
+      responses:
+        '200':
+          description: Fire line check updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FireLine'
+    delete:
+      summary: Delete a specific fire line check by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of the fire line check to delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Fire line check deleted successfully
+
+components:
+  schemas:
+    Luggage:
+      type: object
+      properties:
+        luggage_id:
+          type: string
+        description:
+          type: string
+        weight_kg:
+          type: integer
+        status:
+          type: string
+        container_id:
+          type: string
+    NewLuggage:
+      type: object
+      properties:
+        description:
+          type: string
+        weight_kg:
+          type: integer
+        status:
+          type: string
+        container_id:
+          type: string
+    CargoContainer:
+      type: object
+      properties:
+        container_id:
+          type: string
+        description:
+          type: string
+        capacity_kg:
+          type: integer
+        status:
+          type: string
+        lock_status:
+          type: string
+        lock_img:
+          type: string
+        tag_img:
+          type: string
+        probability:
+          type: number
+        tag:
+          type: string
+    NewCargoContainer:
+      type: object
+      properties:
+        description:
+          type: string
+        capacity_kg:
+          type: integer
+        status:
+          type: string
+        lock_status:
+          type: string
+        lock_img:
+          type: string
+        tag_img:
+          type: string
+        probability:
+          type: number
+        tag:
+          type: string
+    Employee:
+      type: object
+      properties:
+        employee_id:
+          type: string
+        password:
+          type: string
+    NewEmployee:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+        - password
+    RampChecklist:
+      type: object
+      properties:
+        list_id:
+          type: string
+        date:
+          type: string
+          format: date-time
+        type:
+          type: string
+        flight_number:
+          type: string
+        tail_number:
+          type: string
+        gate:
+          type: string
+        standard_clear:
+          type: string
+        safety_clear:
+          type: string
+    NewRampChecklist:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        type:
+          type: string
+        flight_number:
+          type: string
+        tail_number:
+          type: string
+        gate:
+          type: string
+        standard_clear:
+          type: string
+        safety_clear:
+          type: string
+    Check:
+      type: object
+      properties:
+        check_id:
+          type: string
+        attribute1:
+          type: string
+        attribute2:
+          type: string
+        attribute3:
+          type: string
+        # Add more attributes as needed
+    NewCheck:
+      type: object
+      properties:
+        attribute1:
+          type: string
+        attribute2:
+          type: string
+        attribute3:
+          type: string
+        # Add more attributes as needed
+      required:
+        - attribute1
+        - attribute2
+        - attribute3
+    FireLine:
+      type: object
+      properties:
+        id:
+          type: string
+        safety_id:
+          type: string
+        fireline_status:
+          type: boolean
+        fireline_img:
+          type: string
+        tag_img:
+          type: string
+        Type:
+          type: string
+        probability:
+          type: number
+        tag:
+          type: string
+      required:
+        - safety_id
+        - fireline_status
+        - Type
+    NewFireLine:
+      type: object
+      properties:
+        safety_id:
+          type: string
+        fireline_status:
+          type: boolean
+        fireline_img:
+          type: string
+        tag_img:
+          type: string
+        Type:
+          type: string
+        probability:
+          type: number
+        tag:
+          type: string
+      required:
+        - safety_id
+        - fireline_status
+        - Type
