@@ -20,8 +20,8 @@ public class FireLine   {
   @JsonProperty("id")
   private String id = null;
 
-  @JsonProperty("safety_id")
-  private String safetyId = null;
+  @JsonProperty("list_id")
+  private String listId = null;
 
   @JsonProperty("fireline_status")
   private Boolean firelineStatus = null;
@@ -31,9 +31,6 @@ public class FireLine   {
 
   @JsonProperty("tag_img")
   private String tagImg = null;
-
-  @JsonProperty("Type")
-  private String type = null;
 
   @JsonProperty("probability")
   private BigDecimal probability = null;
@@ -51,7 +48,7 @@ public class FireLine   {
    * @return id
    **/
   @Schema(description = "")
-  
+
     public String getId() {
     return id;
   }
@@ -60,24 +57,24 @@ public class FireLine   {
     this.id = id;
   }
 
-  public FireLine safetyId(String safetyId) {
-    this.safetyId = safetyId;
+  public FireLine listId(String listId) {
+    this.listId = listId;
     return this;
   }
 
   /**
-   * Get safetyId
-   * @return safetyId
+   * Get listId
+   * @return listId
    **/
   @Schema(required = true, description = "")
       @NotNull
 
-    public String getSafetyId() {
-    return safetyId;
+    public String getlistId() {
+    return listId;
   }
 
-  public void setSafetyId(String safetyId) {
-    this.safetyId = safetyId;
+  public void setlistId(String listId) {
+    this.listId = listId;
   }
 
   public FireLine firelineStatus(Boolean firelineStatus) {
@@ -92,7 +89,7 @@ public class FireLine   {
   @Schema(required = true, description = "")
       @NotNull
 
-    public Boolean isFirelineStatus() {
+    public Boolean getFirelineStatus() {
     return firelineStatus;
   }
 
@@ -110,7 +107,7 @@ public class FireLine   {
    * @return firelineImg
    **/
   @Schema(description = "")
-  
+
     public String getFirelineImg() {
     return firelineImg;
   }
@@ -129,33 +126,13 @@ public class FireLine   {
    * @return tagImg
    **/
   @Schema(description = "")
-  
+
     public String getTagImg() {
     return tagImg;
   }
 
   public void setTagImg(String tagImg) {
     this.tagImg = tagImg;
-  }
-
-  public FireLine type(String type) {
-    this.type = type;
-    return this;
-  }
-
-  /**
-   * Get type
-   * @return type
-   **/
-  @Schema(required = true, description = "")
-      @NotNull
-
-    public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
   }
 
   public FireLine probability(BigDecimal probability) {
@@ -168,7 +145,7 @@ public class FireLine   {
    * @return probability
    **/
   @Schema(description = "")
-  
+
     @Valid
     public BigDecimal getProbability() {
     return probability;
@@ -188,7 +165,7 @@ public class FireLine   {
    * @return tag
    **/
   @Schema(description = "")
-  
+
     public String getTag() {
     return tag;
   }
@@ -208,31 +185,29 @@ public class FireLine   {
     }
     FireLine fireLine = (FireLine) o;
     return Objects.equals(this.id, fireLine.id) &&
-        Objects.equals(this.safetyId, fireLine.safetyId) &&
+        Objects.equals(this.listId, fireLine.listId) &&
         Objects.equals(this.firelineStatus, fireLine.firelineStatus) &&
         Objects.equals(this.firelineImg, fireLine.firelineImg) &&
         Objects.equals(this.tagImg, fireLine.tagImg) &&
-        Objects.equals(this.type, fireLine.type) &&
         Objects.equals(this.probability, fireLine.probability) &&
         Objects.equals(this.tag, fireLine.tag);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, safetyId, firelineStatus, firelineImg, tagImg, type, probability, tag);
+    return Objects.hash(id, listId, firelineStatus, firelineImg, tagImg, probability, tag);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class FireLine {\n");
-    
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    safetyId: ").append(toIndentedString(safetyId)).append("\n");
+    sb.append("    listId: ").append(toIndentedString(listId)).append("\n");
     sb.append("    firelineStatus: ").append(toIndentedString(firelineStatus)).append("\n");
     sb.append("    firelineImg: ").append(toIndentedString(firelineImg)).append("\n");
     sb.append("    tagImg: ").append(toIndentedString(tagImg)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
     sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
     sb.append("}");

@@ -38,6 +38,29 @@ public class NewRampChecklist   {
   @JsonProperty("safety_clear")
   private String safetyClear = null;
 
+  @JsonProperty("ppe")
+  private Boolean ppe = null;
+
+  @JsonProperty("wheel_chocks")
+  private Boolean wheelChocks = null;
+
+  @JsonProperty("engines_off")
+  private Boolean enginesOff = null;
+
+  @JsonProperty("no_leak")
+  private Boolean noLeak = null;
+
+  @JsonProperty("cargo_damage")
+  private Boolean cargoDamage = null;
+
+  @JsonProperty("doors_secure")
+  private Boolean doorsSecure = null;
+
+  @JsonProperty("belt_loader_secure")
+  private Boolean beltLoaderSecure = null;
+
+
+
   public NewRampChecklist date(OffsetDateTime date) {
     this.date = date;
     return this;
@@ -48,7 +71,7 @@ public class NewRampChecklist   {
    * @return date
    **/
   @Schema(description = "")
-  
+
     @Valid
     public OffsetDateTime getDate() {
     return date;
@@ -68,7 +91,7 @@ public class NewRampChecklist   {
    * @return type
    **/
   @Schema(description = "")
-  
+
     public String getType() {
     return type;
   }
@@ -87,7 +110,7 @@ public class NewRampChecklist   {
    * @return flightNumber
    **/
   @Schema(description = "")
-  
+
     public String getFlightNumber() {
     return flightNumber;
   }
@@ -106,7 +129,7 @@ public class NewRampChecklist   {
    * @return tailNumber
    **/
   @Schema(description = "")
-  
+
     public String getTailNumber() {
     return tailNumber;
   }
@@ -125,7 +148,7 @@ public class NewRampChecklist   {
    * @return gate
    **/
   @Schema(description = "")
-  
+
     public String getGate() {
     return gate;
   }
@@ -144,7 +167,7 @@ public class NewRampChecklist   {
    * @return standardClear
    **/
   @Schema(description = "")
-  
+
     public String getStandardClear() {
     return standardClear;
   }
@@ -163,7 +186,7 @@ public class NewRampChecklist   {
    * @return safetyClear
    **/
   @Schema(description = "")
-  
+
     public String getSafetyClear() {
     return safetyClear;
   }
@@ -171,6 +194,133 @@ public class NewRampChecklist   {
   public void setSafetyClear(String safetyClear) {
     this.safetyClear = safetyClear;
   }
+
+  /**
+   * Get ppe
+   * @return ppe
+   **/
+  @Schema(description = "")
+  public Boolean getPpe() {
+    return ppe;
+  }
+
+  public void setPpe(Boolean ppe) {
+    this.ppe = ppe;
+  }
+
+  public NewRampChecklist ppe(Boolean ppe) {
+    this.ppe = ppe;
+    return this;
+  }
+
+  /**
+   * Get wheelChocks
+   * @return wheelChocks
+   **/
+  @Schema(description = "")
+  public Boolean getWheelChocks() {
+    return wheelChocks;
+  }
+
+  public void setWheelChocks(Boolean wheelChocks) {
+    this.wheelChocks = wheelChocks;
+  }
+
+  public NewRampChecklist wheelChocks(Boolean wheelChocks) {
+    this.wheelChocks = wheelChocks;
+    return this;
+  }
+
+  /**
+   * Get enginesOff
+   * @return enginesOff
+   **/
+  @Schema(description = "")
+  public Boolean getEnginesOff() {
+    return enginesOff;
+  }
+
+  public void setEnginesOff(Boolean enginesOff) {
+    this.enginesOff = enginesOff;
+  }
+
+  public NewRampChecklist enginesOff(Boolean enginesOff) {
+    this.enginesOff = enginesOff;
+    return this;
+  }
+
+  /**
+   * Get noLeak
+   * @return noLeak
+   **/
+  @Schema(description = "")
+  public Boolean getNoLeak() {
+    return noLeak;
+  }
+
+  public void setNoLeak(Boolean noLeak) {
+    this.noLeak = noLeak;
+  }
+
+  public NewRampChecklist noLeak(Boolean noLeak) {
+    this.noLeak = noLeak;
+    return this;
+  }
+
+  /**
+   * Get cargoDamage
+   * @return cargoDamage
+   **/
+  @Schema(description = "")
+  public Boolean getCargoDamage() {
+    return cargoDamage;
+  }
+
+  public void setCargoDamage(Boolean cargoDamage) {
+    this.cargoDamage = cargoDamage;
+  }
+
+  public NewRampChecklist cargoDamage(Boolean cargoDamage) {
+    this.cargoDamage = cargoDamage;
+    return this;
+  }
+
+  /**
+   * Get doorsSecure
+   * @return doorsSecure
+   **/
+  @Schema(description = "")
+  public Boolean getDoorsSecure() {
+    return doorsSecure;
+  }
+
+  public void setDoorsSecure(Boolean doorsSecure) {
+    this.doorsSecure = doorsSecure;
+  }
+
+  public NewRampChecklist doorsSecure(Boolean doorsSecure) {
+    this.doorsSecure = doorsSecure;
+    return this;
+  }
+
+  /**
+   * Get beltLoaderSecure
+   * @return beltLoaderSecure
+   **/
+  @Schema(description = "")
+  public Boolean getBeltLoaderSecure() {
+    return beltLoaderSecure;
+  }
+
+  public void setBeltLoaderSecure(Boolean beltLoaderSecure) {
+    this.beltLoaderSecure = beltLoaderSecure;
+  }
+
+  public NewRampChecklist beltLoaderSecure(Boolean beltLoaderSecure) {
+    this.beltLoaderSecure = beltLoaderSecure;
+    return this;
+  }
+
 
 
   @Override
@@ -200,7 +350,7 @@ public class NewRampChecklist   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class NewRampChecklist {\n");
-    
+
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    flightNumber: ").append(toIndentedString(flightNumber)).append("\n");

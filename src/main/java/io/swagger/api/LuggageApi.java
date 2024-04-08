@@ -38,10 +38,10 @@ import java.util.Map;
 public interface LuggageApi {
 
     @Operation(summary = "Get all luggage items", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "List of luggage items", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Luggage.class)))) })
     @RequestMapping(value = "/luggage",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<Luggage>> luggageGet(@Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by status" ,schema=@Schema()) @Valid @RequestParam(value = "status", required = false) String status
 , @Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by container ID" ,schema=@Schema()) @Valid @RequestParam(value = "container_id", required = false) String containerId
@@ -51,14 +51,23 @@ public interface LuggageApi {
 
 
     @Operation(summary = "Create a new luggage item", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Luggage item created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Luggage.class))) })
     @RequestMapping(value = "/luggage",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
+        produces = { "application/json" },
+        consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<Luggage> luggagePost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewLuggage body
 );
+
+    @Operation(summary = "Delete a specific luggage by ID", description = "", tags={  })
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "luggage deleted successfully") })
+    @RequestMapping(value = "/luggage/{luggage_id}",
+            method = RequestMethod.DELETE)
+    ResponseEntity<Void> luggageIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to delete", required=true, schema=@Schema()) @PathVariable("luggage_id") String luggageId
+    );
+
 
 }
 
