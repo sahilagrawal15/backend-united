@@ -1,8 +1,12 @@
 package io.swagger.api;
 
 import io.swagger.model.FireLine;
+import io.swagger.model.FireLine;
 import io.swagger.model.NewFireLine;
+import io.swagger.service.FireLineService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.service.FireLineService;
+import io.swagger.service.FireLineService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -14,6 +18,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,6 +42,9 @@ import java.util.Map;
 @RestController
 public class FireLineApiController implements FireLineApi {
 
+    @Autowired
+    private final FireLineService fireLineService;
+
     private static final Logger log = LoggerFactory.getLogger(FireLineApiController.class);
 
     private final ObjectMapper objectMapper;
@@ -44,7 +52,8 @@ public class FireLineApiController implements FireLineApi {
     private final HttpServletRequest request;
 
     @org.springframework.beans.factory.annotation.Autowired
-    public FireLineApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public FireLineApiController(FireLineService fireLineService, ObjectMapper objectMapper, HttpServletRequest request) {
+        this.fireLineService = fireLineService;
         this.objectMapper = objectMapper;
         this.request = request;
     }
@@ -52,12 +61,8 @@ public class FireLineApiController implements FireLineApi {
     public ResponseEntity<List<FireLine>> fireLineGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<List<FireLine>>(objectMapper.readValue("[ {\n  \"Type\" : \"Type\",\n  \"probability\" : 0.8008281904610115,\n  \"safety_id\" : \"safety_id\",\n  \"fireline_img\" : \"fireline_img\",\n  \"id\" : \"id\",\n  \"tag\" : \"tag\",\n  \"fireline_status\" : true,\n  \"tag_img\" : \"tag_img\"\n}, {\n  \"Type\" : \"Type\",\n  \"probability\" : 0.8008281904610115,\n  \"safety_id\" : \"safety_id\",\n  \"fireline_img\" : \"fireline_img\",\n  \"id\" : \"id\",\n  \"tag\" : \"tag\",\n  \"fireline_status\" : true,\n  \"tag_img\" : \"tag_img\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<FireLine>>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            List<FireLine> fireLines = fireLineService.getAllFireLine();
+            return new ResponseEntity<>(fireLines, HttpStatus.OK);
         }
 
         return new ResponseEntity<List<FireLine>>(HttpStatus.NOT_IMPLEMENTED);
@@ -66,19 +71,17 @@ public class FireLineApiController implements FireLineApi {
     public ResponseEntity<Void> fireLineIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to delete", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
-        return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
+        fireLineService.deleteFireLine(id);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
     public ResponseEntity<FireLine> fireLineIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to retrieve", required=true, schema=@Schema()) @PathVariable("id") String id
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<FireLine>(objectMapper.readValue("{\n  \"Type\" : \"Type\",\n  \"probability\" : 0.8008281904610115,\n  \"safety_id\" : \"safety_id\",\n  \"fireline_img\" : \"fireline_img\",\n  \"id\" : \"id\",\n  \"tag\" : \"tag\",\n  \"fireline_status\" : true,\n  \"tag_img\" : \"tag_img\"\n}", FireLine.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<FireLine>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            return fireLineService.getFireLineById(id)
+                    .map(container -> new ResponseEntity<>(container, HttpStatus.OK))
+                    .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
         }
 
         return new ResponseEntity<FireLine>(HttpStatus.NOT_IMPLEMENTED);
@@ -89,12 +92,18 @@ public class FireLineApiController implements FireLineApi {
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<FireLine>(objectMapper.readValue("{\n  \"Type\" : \"Type\",\n  \"probability\" : 0.8008281904610115,\n  \"safety_id\" : \"safety_id\",\n  \"fireline_img\" : \"fireline_img\",\n  \"id\" : \"id\",\n  \"tag\" : \"tag\",\n  \"fireline_status\" : true,\n  \"tag_img\" : \"tag_img\"\n}", FireLine.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<FireLine>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            FireLine updatedFireline = new FireLine();
+            updatedFireline.setlistId(body.getlistId());
+            updatedFireline.setFirelineStatus(body.getFirelineStatus());
+            updatedFireline.setFirelineImg(body.getFirelineImg());
+            updatedFireline.setTagImg(body.getTagImg());
+            updatedFireline.setProbability(body.getProbability());
+            updatedFireline.setTag(body.getTag());
+
+            FireLine updated = fireLineService.updateFireLine(id, updatedFireline);
+
+            return new ResponseEntity<>(updated, HttpStatus.OK);
+
         }
 
         return new ResponseEntity<FireLine>(HttpStatus.NOT_IMPLEMENTED);
@@ -104,12 +113,8 @@ public class FireLineApiController implements FireLineApi {
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<FireLine>(objectMapper.readValue("{\n  \"Type\" : \"Type\",\n  \"probability\" : 0.8008281904610115,\n  \"safety_id\" : \"safety_id\",\n  \"fireline_img\" : \"fireline_img\",\n  \"id\" : \"id\",\n  \"tag\" : \"tag\",\n  \"fireline_status\" : true,\n  \"tag_img\" : \"tag_img\"\n}", FireLine.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<FireLine>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            FireLine createdContainer = fireLineService.createFireLine(body);
+            return new ResponseEntity<>(createdContainer, HttpStatus.CREATED);
         }
 
         return new ResponseEntity<FireLine>(HttpStatus.NOT_IMPLEMENTED);
