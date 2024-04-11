@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -21,6 +23,7 @@ import javax.validation.constraints.*;
 public class Luggage   {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("luggage_id")
   private String luggageId = null;
 

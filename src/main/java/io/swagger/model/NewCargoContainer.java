@@ -17,41 +17,20 @@ import javax.validation.constraints.*;
 /**
  * NewCargoContainer
  */
-@Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
+import java.math.BigDecimal;
 
 public class NewCargoContainer {
 
-  @Column(columnDefinition = "text") // Define the length for VARCHAR
-  @JsonProperty("description")
   private String description;
-
-  @JsonProperty("capacity")
   private Integer capacity;
-
-  @Convert(converter = StatusConverter.class)
-  @JsonProperty("status")
   private Status status;
-
-  @Convert(converter = LockStatusConverter.class)
-  @JsonProperty("lock_status")
   private LockStatus lockStatus;
-
-  @Column(columnDefinition = "text") // Define the length for VARCHAR
-
-  @JsonProperty("lock_img")
   private String lockImg;
-
-  @JsonProperty("tag_img")
   private String tagImg;
-
-  @JsonProperty("probability")
   private BigDecimal probability;
-
-  @JsonProperty("tag")
   private String tag;
 
-  // Getters and setter
+  // Constructor
 
 
   public String getDescription() {
@@ -116,5 +95,19 @@ public class NewCargoContainer {
 
   public void setTag(String tag) {
     this.tag = tag;
+  }
+
+  public NewCargoContainer(String description, Integer capacity, Status status, LockStatus lockStatus, String lockImg, String tagImg, BigDecimal probability, String tag) {
+    this.description = description;
+    this.capacity = capacity;
+    this.status = status;
+    this.lockStatus = lockStatus;
+    this.lockImg = lockImg;
+    this.tagImg = tagImg;
+    this.probability = probability;
+    this.tag = tag;
+  }
+
+  public NewCargoContainer() {
   }
 }

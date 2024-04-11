@@ -47,8 +47,8 @@ public class NewRampChecklist   {
   @JsonProperty("engines_off")
   private Boolean enginesOff = null;
 
-  @JsonProperty("no_leak")
-  private Boolean noLeak = null;
+  @JsonProperty("no_leaks")
+  private Boolean noLeaks = null;
 
   @JsonProperty("cargo_damage")
   private Boolean cargoDamage = null;
@@ -255,15 +255,15 @@ public class NewRampChecklist   {
    **/
   @Schema(description = "")
   public Boolean getNoLeak() {
-    return noLeak;
+    return noLeaks;
   }
 
   public void setNoLeak(Boolean noLeak) {
-    this.noLeak = noLeak;
+    this.noLeaks = noLeak;
   }
 
   public NewRampChecklist noLeak(Boolean noLeak) {
-    this.noLeak = noLeak;
+    this.noLeaks = noLeak;
     return this;
   }
 

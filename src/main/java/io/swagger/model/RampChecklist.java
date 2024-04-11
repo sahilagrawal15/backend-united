@@ -8,6 +8,8 @@ import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -22,6 +24,7 @@ import javax.validation.constraints.*;
 public class RampChecklist   {
 
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("list_id")
   private String listId = null;
 
@@ -55,8 +58,8 @@ public class RampChecklist   {
   @JsonProperty("engines_off")
   private Boolean enginesOff = null;
 
-  @JsonProperty("no_leak")
-  private Boolean noLeak = null;
+  @JsonProperty("no_leaks")
+  private Boolean noLeaks = null;
 
   @JsonProperty("cargo_damage")
   private Boolean cargoDamage = null;
@@ -280,15 +283,15 @@ public class RampChecklist   {
    **/
   @Schema(description = "")
   public Boolean getNoLeak() {
-    return noLeak;
+    return noLeaks;
   }
 
   public void setNoLeak(Boolean noLeak) {
-    this.noLeak = noLeak;
+    this.noLeaks = noLeak;
   }
 
   public RampChecklist noLeak(Boolean noLeak) {
-    this.noLeak = noLeak;
+    this.noLeaks = noLeak;
     return this;
   }
 

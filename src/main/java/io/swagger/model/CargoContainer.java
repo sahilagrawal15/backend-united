@@ -23,6 +23,7 @@ import javax.validation.constraints.*;
 @Table(name = "cargo_container")
 public class CargoContainer {
   @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("container_id")
   private String containerId;
 
@@ -41,7 +42,6 @@ public class CargoContainer {
   @JsonProperty("lock_status")
   private LockStatus lockStatus;
 
-  @Column(columnDefinition = "text") // Define the length for VARCHAR
 
   @JsonProperty("lock_img")
   private String lockImg;
