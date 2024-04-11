@@ -7,10 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import org.threeten.bp.OffsetDateTime;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -21,56 +18,57 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
 @Entity
-public class RampChecklist   {
+@Table(name = "ramp_checklist")
+public class RampChecklist {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("list_id")
-  private String listId = null;
+  private Long listId = null;
 
-  @JsonProperty("date")
+  @Column(name = "date")
   private OffsetDateTime date = null;
 
-  @JsonProperty("type")
+  @Column(name = "type")
   private String type = null;
 
-  @JsonProperty("flight_number")
+  @Column(name = "flight_number")
   private String flightNumber = null;
 
-  @JsonProperty("tail_number")
+  @Column(name = "tail_number")
   private String tailNumber = null;
 
-  @JsonProperty("gate")
+  @Column(name = "gate")
   private String gate = null;
 
-  @JsonProperty("standard_clear")
+  @Column(name = "standard_clear")
   private String standardClear = null;
 
-  @JsonProperty("safety_clear")
+  @Column(name = "safety_clear")
   private String safetyClear = null;
 
-  @JsonProperty("ppe")
+  @Column(name = "ppe")
   private Boolean ppe = null;
 
-  @JsonProperty("wheel_chocks")
+  @Column(name = "wheel_chocks")
   private Boolean wheelChocks = null;
 
-  @JsonProperty("engines_off")
+  @Column(name = "engines_off")
   private Boolean enginesOff = null;
 
-  @JsonProperty("no_leaks")
+  @Column(name = "no_leaks")
   private Boolean noLeaks = null;
 
-  @JsonProperty("cargo_damage")
+  @Column(name = "cargo_damage")
   private Boolean cargoDamage = null;
 
-  @JsonProperty("doors_secure")
+  @Column(name = "doors_secure")
   private Boolean doorsSecure = null;
 
-  @JsonProperty("belt_loader_secure")
+  @Column(name = "belt_loader_secure")
   private Boolean beltLoaderSecure = null;
 
-  public RampChecklist listId(String listId) {
+  public RampChecklist listId(Long listId) {
     this.listId = listId;
     return this;
   }
@@ -81,11 +79,11 @@ public class RampChecklist   {
    **/
   @Schema(description = "")
 
-    public String getListId() {
+    public Long getListId() {
     return listId;
   }
 
-  public void setListId(String listId) {
+  public void setListId(Long listId) {
     this.listId = listId;
   }
 

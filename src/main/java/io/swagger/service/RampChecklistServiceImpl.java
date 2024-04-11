@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-    public class RampChecklistServiceImpl implements RampChecklistService {
+public class RampChecklistServiceImpl implements RampChecklistService {
 
         private final RampChecklistRepository rampChecklistRepository;
 
@@ -23,7 +23,7 @@ import java.util.Optional;
             return rampChecklistRepository.findAll();
         }
 
-        public Optional<RampChecklist> getRampChecklistById(String id) {
+        public Optional<RampChecklist> getRampChecklistById(Long id) {
             return rampChecklistRepository.findById(id);
         }
 
@@ -49,7 +49,7 @@ import java.util.Optional;
             return rampChecklistRepository.save(newRampChecklist);
         }
 
-        public RampChecklist updateRampChecklist(String id, RampChecklist updatedRampChecklist) {
+        public RampChecklist updateRampChecklist(Long id, RampChecklist updatedRampChecklist) {
             if (rampChecklistRepository.existsById(id)) {
                 updatedRampChecklist.setListId(id);
                 return rampChecklistRepository.save(updatedRampChecklist);
@@ -58,7 +58,7 @@ import java.util.Optional;
             }
         }
 
-        public void deleteRampChecklist(String id) {
+        public void deleteRampChecklist(Long id) {
             rampChecklistRepository.deleteById(id);
         }
     }

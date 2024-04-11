@@ -11,10 +11,10 @@ public interface RampChecklistService {
 
     RampChecklist createRampChecklist(NewRampChecklist rampChecklist);
 
-    Optional<RampChecklist> getRampChecklistById(String id);
+    Optional<RampChecklist> getRampChecklistById(Long id);
 
-    RampChecklist updateRampChecklist(String id, RampChecklist updatedRampChecklist);
+    RampChecklist updateRampChecklist(Long id, RampChecklist updatedRampChecklist);
 
-    void deleteRampChecklist(String id);
+    void deleteRampChecklist(Long id);
 }
 

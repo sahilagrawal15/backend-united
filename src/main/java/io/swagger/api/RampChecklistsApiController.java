@@ -69,14 +69,14 @@ public class RampChecklistsApiController implements RampChecklistsApi {
         return new ResponseEntity<List<RampChecklist>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> rampChecklistsListIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to delete", required=true, schema=@Schema()) @PathVariable("list_id") String listId
+    public ResponseEntity<Void> rampChecklistsListIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to delete", required=true, schema=@Schema()) @PathVariable("list_id") Long listId
 ) {
         String accept = request.getHeader("Accept");
         rampChecklistService.deleteRampChecklist(listId);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<RampChecklist> rampChecklistsListIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to retrieve", required=true, schema=@Schema()) @PathVariable("list_id") String listId
+    public ResponseEntity<RampChecklist> rampChecklistsListIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to retrieve", required=true, schema=@Schema()) @PathVariable("list_id") Long listId
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
@@ -89,7 +89,7 @@ public class RampChecklistsApiController implements RampChecklistsApi {
         return new ResponseEntity<RampChecklist>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<RampChecklist> rampChecklistsListIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to update", required=true, schema=@Schema()) @PathVariable("list_id") String listId
+    public ResponseEntity<RampChecklist> rampChecklistsListIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to update", required=true, schema=@Schema()) @PathVariable("list_id") Long listId
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewRampChecklist body
 ) {
         String accept = request.getHeader("Accept");

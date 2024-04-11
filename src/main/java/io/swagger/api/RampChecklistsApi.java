@@ -51,7 +51,7 @@ public interface RampChecklistsApi {
         @ApiResponse(responseCode = "204", description = "Ramp checklist deleted successfully") })
     @RequestMapping(value = "/ramp-checklists/{list_id}",
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> rampChecklistsListIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to delete", required=true, schema=@Schema()) @PathVariable("list_id") String listId
+    ResponseEntity<Void> rampChecklistsListIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to delete", required=true, schema=@Schema()) @PathVariable("list_id") Long listId
 );
 
 
@@ -61,7 +61,7 @@ public interface RampChecklistsApi {
     @RequestMapping(value = "/ramp-checklists/{list_id}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<RampChecklist> rampChecklistsListIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to retrieve", required=true, schema=@Schema()) @PathVariable("list_id") String listId
+    ResponseEntity<RampChecklist> rampChecklistsListIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to retrieve", required=true, schema=@Schema()) @PathVariable("list_id") Long listId
 );
 
 
@@ -72,7 +72,7 @@ public interface RampChecklistsApi {
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.PUT)
-    ResponseEntity<RampChecklist> rampChecklistsListIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to update", required=true, schema=@Schema()) @PathVariable("list_id") String listId
+    ResponseEntity<RampChecklist> rampChecklistsListIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the ramp checklist to update", required=true, schema=@Schema()) @PathVariable("list_id") Long listId
 , @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewRampChecklist body
 );
 

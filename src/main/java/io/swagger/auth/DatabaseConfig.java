@@ -23,19 +23,19 @@ public class DatabaseConfig {
                 .build();
     }
 
-    @Bean
-    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
-        DataSourceInitializer initializer = new DataSourceInitializer();
-        initializer.setDataSource(dataSource);
-        initializer.setDatabasePopulator(databasePopulator());
-        return initializer;
-    }
-
-    private ResourceDatabasePopulator databasePopulator() {
-        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-        populator.addScript(new ClassPathResource("united_airlines_ramp.sql")); // Path to your SQL script
-        // Add more scripts if needed
-        return populator;
-    }
+//    @Bean
+//    public DataSourceInitializer dataSourceInitializer(DataSource dataSource) {
+//        DataSourceInitializer initializer = new DataSourceInitializer();
+//        initializer.setDataSource(dataSource);
+//        initializer.setDatabasePopulator(databasePopulator());
+//        return initializer;
+//    }
+//
+//    private ResourceDatabasePopulator databasePopulator() {
+//        ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+//        populator.addScript(new ClassPathResource("united_airlines_ramp.sql")); // Path to your SQL script
+//        // Add more scripts if needed
+//        return populator;
+//    }
 }
 

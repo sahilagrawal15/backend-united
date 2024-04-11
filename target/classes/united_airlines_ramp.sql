@@ -160,9 +160,9 @@ ALTER TABLE `luggage`
   ADD PRIMARY KEY (`luggage_id`),
   ADD KEY `container_id` (`container_id`);
 
---
--- Indexes for table `ramp_checklist`
---
+----
+---- Indexes for table `ramp_checklist`
+----
 ALTER TABLE `ramp_checklist`
   ADD PRIMARY KEY (`list_id`);
 
@@ -210,6 +210,9 @@ ALTER TABLE `fireline`
 --
 ALTER TABLE `luggage`
   ADD CONSTRAINT `luggage_ibfk_1` FOREIGN KEY (`container_id`) REFERENCES `cargo_container` (`container_id`);
+
+--  ALTER TABLE `ramp_checklist`
+--    CHANGE COLUMN `list_id` `list_id` INT AUTO_INCREMENT PRIMARY KEY;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
