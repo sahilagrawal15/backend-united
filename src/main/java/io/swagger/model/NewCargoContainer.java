@@ -3,9 +3,14 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.service.LockStatusConverter;
+import io.swagger.service.StatusConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -15,44 +20,41 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
+public class NewCargoContainer {
 
-public class NewCargoContainer   {
+  @Column(columnDefinition = "text") // Define the length for VARCHAR
   @JsonProperty("description")
-  private String description = null;
+  private String description;
 
-  @JsonProperty("capacity_kg")
-  private Integer capacityKg = null;
+  @JsonProperty("capacity")
+  private Integer capacity;
 
+  @Convert(converter = StatusConverter.class)
   @JsonProperty("status")
-  private String status = null;
+  private Status status;
 
+  @Convert(converter = LockStatusConverter.class)
   @JsonProperty("lock_status")
-  private String lockStatus = null;
+  private LockStatus lockStatus;
+
+  @Column(columnDefinition = "text") // Define the length for VARCHAR
 
   @JsonProperty("lock_img")
-  private String lockImg = null;
+  private String lockImg;
 
   @JsonProperty("tag_img")
-  private String tagImg = null;
+  private String tagImg;
 
   @JsonProperty("probability")
-  private BigDecimal probability = null;
+  private BigDecimal probability;
 
   @JsonProperty("tag")
-  private String tag = null;
+  private String tag;
 
-  public NewCargoContainer description(String description) {
-    this.description = description;
-    return this;
-  }
+  // Getters and setter
 
-  /**
-   * Get description
-   * @return description
-   **/
-  @Schema(description = "")
-  
-    public String getDescription() {
+
+  public String getDescription() {
     return description;
   }
 
@@ -60,75 +62,31 @@ public class NewCargoContainer   {
     this.description = description;
   }
 
-  public NewCargoContainer capacityKg(Integer capacityKg) {
-    this.capacityKg = capacityKg;
-    return this;
+  public Integer getCapacity() {
+    return capacity;
   }
 
-  /**
-   * Get capacityKg
-   * @return capacityKg
-   **/
-  @Schema(description = "")
-  
-    public Integer getCapacityKg() {
-    return capacityKg;
+  public void setCapacity(Integer capacity) {
+    this.capacity = capacity;
   }
 
-  public void setCapacityKg(Integer capacityKg) {
-    this.capacityKg = capacityKg;
-  }
-
-  public NewCargoContainer status(String status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-   **/
-  @Schema(description = "")
-  
-    public String getStatus() {
+  public Status getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(Status status) {
     this.status = status;
   }
 
-  public NewCargoContainer lockStatus(String lockStatus) {
-    this.lockStatus = lockStatus;
-    return this;
-  }
-
-  /**
-   * Get lockStatus
-   * @return lockStatus
-   **/
-  @Schema(description = "")
-  
-    public String getLockStatus() {
+  public LockStatus getLockStatus() {
     return lockStatus;
   }
 
-  public void setLockStatus(String lockStatus) {
+  public void setLockStatus(LockStatus lockStatus) {
     this.lockStatus = lockStatus;
   }
 
-  public NewCargoContainer lockImg(String lockImg) {
-    this.lockImg = lockImg;
-    return this;
-  }
-
-  /**
-   * Get lockImg
-   * @return lockImg
-   **/
-  @Schema(description = "")
-  
-    public String getLockImg() {
+  public String getLockImg() {
     return lockImg;
   }
 
@@ -136,18 +94,7 @@ public class NewCargoContainer   {
     this.lockImg = lockImg;
   }
 
-  public NewCargoContainer tagImg(String tagImg) {
-    this.tagImg = tagImg;
-    return this;
-  }
-
-  /**
-   * Get tagImg
-   * @return tagImg
-   **/
-  @Schema(description = "")
-  
-    public String getTagImg() {
+  public String getTagImg() {
     return tagImg;
   }
 
@@ -155,19 +102,7 @@ public class NewCargoContainer   {
     this.tagImg = tagImg;
   }
 
-  public NewCargoContainer probability(BigDecimal probability) {
-    this.probability = probability;
-    return this;
-  }
-
-  /**
-   * Get probability
-   * @return probability
-   **/
-  @Schema(description = "")
-  
-    @Valid
-    public BigDecimal getProbability() {
+  public BigDecimal getProbability() {
     return probability;
   }
 
@@ -175,75 +110,11 @@ public class NewCargoContainer   {
     this.probability = probability;
   }
 
-  public NewCargoContainer tag(String tag) {
-    this.tag = tag;
-    return this;
-  }
-
-  /**
-   * Get tag
-   * @return tag
-   **/
-  @Schema(description = "")
-  
-    public String getTag() {
+  public String getTag() {
     return tag;
   }
 
   public void setTag(String tag) {
     this.tag = tag;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    NewCargoContainer newCargoContainer = (NewCargoContainer) o;
-    return Objects.equals(this.description, newCargoContainer.description) &&
-        Objects.equals(this.capacityKg, newCargoContainer.capacityKg) &&
-        Objects.equals(this.status, newCargoContainer.status) &&
-        Objects.equals(this.lockStatus, newCargoContainer.lockStatus) &&
-        Objects.equals(this.lockImg, newCargoContainer.lockImg) &&
-        Objects.equals(this.tagImg, newCargoContainer.tagImg) &&
-        Objects.equals(this.probability, newCargoContainer.probability) &&
-        Objects.equals(this.tag, newCargoContainer.tag);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(description, capacityKg, status, lockStatus, lockImg, tagImg, probability, tag);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class NewCargoContainer {\n");
-    
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    capacityKg: ").append(toIndentedString(capacityKg)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    lockStatus: ").append(toIndentedString(lockStatus)).append("\n");
-    sb.append("    lockImg: ").append(toIndentedString(lockImg)).append("\n");
-    sb.append("    tagImg: ").append(toIndentedString(tagImg)).append("\n");
-    sb.append("    probability: ").append(toIndentedString(probability)).append("\n");
-    sb.append("    tag: ").append(toIndentedString(tag)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
   }
 }

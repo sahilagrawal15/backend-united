@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\wuj18\Desktop\backend-united_new\src\main\java\io\swagger\api\ApiException.java
 C:\Users\wuj18\Desktop\backend-united_new\src\main\java\io\swagger\model\NewRampChecklist.java
 C:\Users\wuj18\Desktop\backend-united_new\src\main\java\io\swagger\api\ApiOriginFilter.java
@@ -46,3 +47,54 @@ C:\Users\wuj18\Desktop\backend-united_new\src\main\java\io\swagger\api\SafetyChe
 C:\Users\wuj18\Desktop\backend-united_new\src\main\java\io\swagger\configuration\SwaggerUiConfiguration.java
 C:\Users\wuj18\Desktop\backend-united_new\src\main\java\io\swagger\auth\JwtUtils.java
 C:\Users\wuj18\Desktop\backend-united_new\src\main\java\io\swagger\repository\EmployeeRepository.java
+=======
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/NewCheck.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/configuration/CustomInstantDeserializer.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/ApiOriginFilter.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/Luggage.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/auth/JwtUtils.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/StandardChecksApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/StandardChecksApiController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/service/CargoContainerService.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/auth/SecurityConfig.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/Swagger2SpringBoot.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/configuration/LocalDateTimeConverter.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/Employee.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/SafetyChecksApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/FireLine.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/CargoContainer.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/repository/EmployeeRepository.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/CargoContainersApiController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/RampChecklistsApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/configuration/HomeController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/service/CustomUserDetailsService.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/NewRampChecklist.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/FireLineApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/RampChecklistsApiController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/RFC3339DateFormat.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/Check.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/NewEmployee.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/configuration/JacksonConfiguration.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/RampChecklist.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/NewCargoContainer.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/configuration/SwaggerDocumentationConfig.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/FireLineApiController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/EmployeesApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/CargoContainersApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/LuggageApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/ChecksApi.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/configuration/SwaggerUiConfiguration.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/ApiResponseMessage.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/ChecksApiController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/NotFoundException.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/configuration/LocalDateConverter.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/repository/CargoContainerRepository.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/SafetyChecksApiController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/AuthenticationController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/ApiException.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/NewLuggage.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/service/CargoContainerServiceImpl.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/LuggageApiController.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/model/NewFireLine.java
+/Users/sahilagrawal/Documents/IT/sem 2/Capstone/backend-united/src/main/java/io/swagger/api/EmployeesApiController.java
+>>>>>>> Stashed changes

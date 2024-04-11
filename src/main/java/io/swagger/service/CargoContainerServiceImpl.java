@@ -30,7 +30,7 @@ public class CargoContainerServiceImpl implements CargoContainerService {
     public CargoContainer createCargoContainer(NewCargoContainer cargoContainer) {
         CargoContainer newCargoContainer = new CargoContainer();
         newCargoContainer.setDescription(cargoContainer.getDescription());
-        newCargoContainer.setCapacityKg(cargoContainer.getCapacityKg());
+        newCargoContainer.setCapacity(cargoContainer.getCapacity());
         newCargoContainer.setStatus(cargoContainer.getStatus());
         newCargoContainer.setLockStatus(cargoContainer.getLockStatus());
         newCargoContainer.setLockImg(cargoContainer.getLockImg());

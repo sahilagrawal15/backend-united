@@ -81,7 +81,6 @@ public class CargoContainersApiController implements CargoContainersApi {
         if (accept != null && accept.contains("application/json")) {
             CargoContainer updatedCargoContainer = new CargoContainer();
             updatedCargoContainer.setDescription(body.getDescription());
-            updatedCargoContainer.setCapacityKg(body.getCapacityKg());
             updatedCargoContainer.setStatus(body.getStatus());
             updatedCargoContainer.setLockStatus(body.getLockStatus());
             updatedCargoContainer.setLockImg(body.getLockImg());
