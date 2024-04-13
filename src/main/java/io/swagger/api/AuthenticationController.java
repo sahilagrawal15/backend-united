@@ -1,14 +1,15 @@
 //package io.swagger.api;
 //
 //import io.swagger.auth.JwtUtils;
+//import io.swagger.model.AuthenticationResponse;
 //import io.swagger.model.Employee;
-//import io.swagger.service.CustomUserDetailsService;
+//import io.swagger.service.MyEmployeeDetailsService;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.http.ResponseEntity;
 //import org.springframework.security.authentication.AuthenticationManager;
+//import org.springframework.security.authentication.BadCredentialsException;
 //import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 //import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.bind.annotation.RequestBody;
@@ -21,36 +22,26 @@
 //    private AuthenticationManager authenticationManager;
 //
 //    @Autowired
-//    private CustomUserDetailsService customUserDetailsService;
+//    private JwtUtils jwtTokenUtil;
 //
 //    @Autowired
-//    private JwtUtils jwtUtils;
+//    private MyEmployeeDetailsService userDetailsService;
 //
 //    @PostMapping("/authenticate")
-//    public ResponseEntity<?> createAuthenticationToken(@RequestBody Employee employee) {
-//        final Authentication authentication = authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(employee.getEmployeeId(), employee.getPassword())
-//        );
+//    public ResponseEntity<?> createAuthenticationToken(@RequestBody Employee authenticationRequest) throws Exception {
+//        try {
+//            Authentication authentication = authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(authenticationRequest.getEmployeeId(), authenticationRequest.getPassword())
+//            );
+//        } catch (BadCredentialsException e) {
+//            throw new Exception("Incorrect username or password", e);
+//        }
 //
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//        final UserDetails userDetails = userDetailsService
+//                .loadUserByUsername(authenticationRequest.getEmployeeId());
 //
-//        final UserDetails userDetails = customUserDetailsService
-//                .loadUserByUsername(employee.getEmployeeId());
-//
-//        final String jwt = jwtUtils.generateToken(userDetails);
+//        final String jwt = jwtTokenUtil.generateToken(userDetails);
 //
 //        return ResponseEntity.ok(new AuthenticationResponse(jwt));
-//    }
-//
-//    static class AuthenticationResponse {
-//        private final String token;
-//
-//        public AuthenticationResponse(String token) {
-//            this.token = token;
-//        }
-//
-//        public String getToken() {
-//            return token;
-//        }
 //    }
 //}
