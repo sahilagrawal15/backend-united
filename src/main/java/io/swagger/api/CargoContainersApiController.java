@@ -91,11 +91,7 @@ public class CargoContainersApiController implements CargoContainersApi {
             CargoContainer updatedCargoContainer = new CargoContainer();
             updatedCargoContainer.setListId(body.getListId());
             updatedCargoContainer.setDescription(body.getDescription());
-<<<<<<< Updated upstream
-            updatedCargoContainer.setCapacityKg(body.getCapacityKg());
-=======
             updatedCargoContainer.setCapacity(body.getCapacity());
->>>>>>> Stashed changes
             updatedCargoContainer.setStatus(body.getStatus());
             updatedCargoContainer.setDamage(body.getDamage());
             updatedCargoContainer.setLockStatus(body.getLockStatus());

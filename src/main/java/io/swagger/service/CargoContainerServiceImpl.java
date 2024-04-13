@@ -31,12 +31,8 @@ public class CargoContainerServiceImpl implements CargoContainerService {
         CargoContainer newCargoContainer = new CargoContainer();
         newCargoContainer.setListId(cargoContainer.getListId());
         newCargoContainer.setDescription(cargoContainer.getDescription());
-<<<<<<< Updated upstream
-        newCargoContainer.setCapacityKg(cargoContainer.getCapacityKg());
-=======
         newCargoContainer.setCapacity(cargoContainer.getCapacity());
         newCargoContainer.setDamage(cargoContainer.getDamage());
->>>>>>> Stashed changes
         newCargoContainer.setStatus(cargoContainer.getStatus());
         newCargoContainer.setLockStatus(cargoContainer.getLockStatus());
         newCargoContainer.setLockImg(cargoContainer.getLockImg());

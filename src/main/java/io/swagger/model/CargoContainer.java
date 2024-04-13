@@ -3,6 +3,8 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.service.LockStatusConverter;
+import io.swagger.service.StatusConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
@@ -10,6 +12,7 @@ import org.springframework.validation.annotation.Validated;
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+
 
 /**
  * CargoContainer

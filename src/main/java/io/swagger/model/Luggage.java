@@ -6,9 +6,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
+
 
 /**
  * Luggage
@@ -18,9 +19,11 @@ import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "luggage")
-public class Luggage   {
-  @JsonProperty("luggage_id")
+public class Luggage  {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonProperty("luggage_id")
   private Long luggageId = null;
 
   @Column(name = "description")

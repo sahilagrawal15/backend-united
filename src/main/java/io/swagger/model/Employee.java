@@ -20,12 +20,8 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
 @Entity
-<<<<<<< Updated upstream
-public class Employee   {
-=======
 @Table(name = "employee")
 public class Employee {
->>>>>>> Stashed changes
   @JsonProperty("employee_id")
   @Id
   private String employeeId = null;
