@@ -12,6 +12,7 @@ import javax.validation.constraints.*;
 /**
  * NewCargoContainer
  */
+<<<<<<< Updated upstream
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
@@ -53,6 +54,35 @@ public class NewCargoContainer   {
   @Schema(description = "")
   
     public String getDescription() {
+=======
+import java.math.BigDecimal;
+
+public class NewCargoContainer {
+
+  private Long listId;
+  private String description;
+  private Integer capacity;
+  private Boolean damage;
+  private Status status;
+  private LockStatus lockStatus;
+  private String lockImg;
+  private String tagImg;
+  private BigDecimal probability;
+  private String tag;
+
+  // Constructor
+
+
+  public Long getListId() {
+    return listId;
+  }
+
+  public void setListId(Long listId) {
+    this.listId = listId;
+  }
+
+  public String getDescription() {
+>>>>>>> Stashed changes
     return description;
   }
 
@@ -75,6 +105,7 @@ public class NewCargoContainer   {
     return capacityKg;
   }
 
+<<<<<<< Updated upstream
   public void setCapacityKg(Integer capacityKg) {
     this.capacityKg = capacityKg;
   }
@@ -91,6 +122,18 @@ public class NewCargoContainer   {
   @Schema(description = "")
   
     public String getStatus() {
+=======
+
+  public Boolean getDamage() {
+    return damage;
+  }
+
+  public void setDamage(Boolean damage) {
+    this.damage = damage;
+  }
+
+  public Status getStatus() {
+>>>>>>> Stashed changes
     return status;
   }
 
@@ -194,6 +237,7 @@ public class NewCargoContainer   {
     this.tag = tag;
   }
 
+<<<<<<< Updated upstream
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -212,6 +256,19 @@ public class NewCargoContainer   {
         Objects.equals(this.tagImg, newCargoContainer.tagImg) &&
         Objects.equals(this.probability, newCargoContainer.probability) &&
         Objects.equals(this.tag, newCargoContainer.tag);
+=======
+  public NewCargoContainer(Long listId, String description, Integer capacity, Boolean damage, Status status, LockStatus lockStatus, String lockImg, String tagImg, BigDecimal probability, String tag) {
+    this.listId = listId;
+    this.description = description;
+    this.capacity = capacity;
+    this.damage = damage;
+    this.status = status;
+    this.lockStatus = lockStatus;
+    this.lockImg = lockImg;
+    this.tagImg = tagImg;
+    this.probability = probability;
+    this.tag = tag;
+>>>>>>> Stashed changes
   }
 
   @Override

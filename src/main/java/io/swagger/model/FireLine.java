@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
+<<<<<<< Updated upstream
+=======
+
+import javax.persistence.*;
+>>>>>>> Stashed changes
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -15,30 +20,37 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
-
+@Table(name = "fire_line")
 public class FireLine   {
+<<<<<<< Updated upstream
   @JsonProperty("id")
   private String id = null;
+=======
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonProperty("id")
+  private Long id = null;
+>>>>>>> Stashed changes
 
-  @JsonProperty("list_id")
-  private String listId = null;
+  @Column(name = "list_id")
+  private Long listId = null;
 
-  @JsonProperty("fireline_status")
+  @Column(name = "fireline_status")
   private Boolean firelineStatus = null;
 
-  @JsonProperty("fireline_img")
+  @Column(name = "fireline_img")
   private String firelineImg = null;
 
-  @JsonProperty("tag_img")
+  @Column(name = "tag_img")
   private String tagImg = null;
 
-  @JsonProperty("probability")
+  @Column(name = "probability")
   private BigDecimal probability = null;
 
-  @JsonProperty("tag")
+  @Column(name = "tag")
   private String tag = null;
 
-  public FireLine id(String id) {
+  public FireLine id(Long id) {
     this.id = id;
     return this;
   }
@@ -49,15 +61,15 @@ public class FireLine   {
    **/
   @Schema(description = "")
 
-    public String getId() {
+    public Long getId() {
     return id;
   }
 
-  public void setId(String id) {
+  public void setId(Long id) {
     this.id = id;
   }
 
-  public FireLine listId(String listId) {
+  public FireLine listId(Long listId) {
     this.listId = listId;
     return this;
   }
@@ -69,11 +81,11 @@ public class FireLine   {
   @Schema(required = true, description = "")
       @NotNull
 
-    public String getlistId() {
+    public Long getlistId() {
     return listId;
   }
 
-  public void setlistId(String listId) {
+  public void setlistId(Long listId) {
     this.listId = listId;
   }
 

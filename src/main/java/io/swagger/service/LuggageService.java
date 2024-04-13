@@ -13,11 +13,11 @@ public interface LuggageService {
 
     Luggage createLuggage(NewLuggage luggage);
 
-    Optional<Luggage> getLuggageById(String id);
+    Optional<Luggage> getLuggageById(Long id);
 
-    Luggage updateLuggage(String id, Luggage updatedLuggage);
+    Luggage updateLuggage(Long id, Luggage updatedLuggage);
 
-    void deleteLuggage(String id);
+    void deleteLuggage(Long id);
 
 
 

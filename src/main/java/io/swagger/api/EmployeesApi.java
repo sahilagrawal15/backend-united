@@ -38,7 +38,7 @@ import java.util.Map;
 public interface EmployeesApi {
 
     @Operation(summary = "Delete a specific employee by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "204", description = "Employee deleted successfully") })
     @RequestMapping(value = "/employees/{employee_id}",
         method = RequestMethod.DELETE)
@@ -47,21 +47,21 @@ public interface EmployeesApi {
 
 
     @Operation(summary = "Get a specific employee by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Employee details", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Employee.class))) })
     @RequestMapping(value = "/employees/{employee_id}",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<Employee> employeesEmployeeIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the employee to retrieve", required=true, schema=@Schema()) @PathVariable("employee_id") String employeeId
 );
 
 
     @Operation(summary = "Update a specific employee by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Employee updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Employee.class))) })
     @RequestMapping(value = "/employees/{employee_id}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
+        produces = { "application/json" },
+        consumes = { "application/json" },
         method = RequestMethod.PUT)
     ResponseEntity<Employee> employeesEmployeeIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the employee to update", required=true, schema=@Schema()) @PathVariable("employee_id") String employeeId
 , @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewEmployee body
@@ -69,20 +69,20 @@ public interface EmployeesApi {
 
 
     @Operation(summary = "Get all employees", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "List of employees", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Employee.class)))) })
     @RequestMapping(value = "/employees",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<Employee>> employeesGet();
 
 
     @Operation(summary = "Create a new employee", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Employee created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Employee.class))) })
     @RequestMapping(value = "/employees",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
+        produces = { "application/json" },
+        consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<Employee> employeesPost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewEmployee body
 );

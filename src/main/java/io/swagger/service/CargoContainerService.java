@@ -10,11 +10,11 @@ public interface CargoContainerService {
 
     List<CargoContainer> getAllCargoContainers();
 
-    Optional<CargoContainer> getCargoContainerById(String id);
+    Optional<CargoContainer> getCargoContainerById(Long id);
 
     CargoContainer createCargoContainer(NewCargoContainer cargoContainer);
 
-    CargoContainer updateCargoContainer(String id, CargoContainer updatedCargoContainer);
+    CargoContainer updateCargoContainer(Long id, CargoContainer updatedCargoContainer);
 
-    void deleteCargoContainer(String id);
+    void deleteCargoContainer(Long id);
 }

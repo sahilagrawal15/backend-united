@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FireLineRepository extends JpaRepository<FireLine, String> {
+public interface FireLineRepository extends JpaRepository<FireLine, Long> {
 }

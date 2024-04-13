@@ -3,6 +3,8 @@ package io.swagger.api;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.model.Luggage;
 import io.swagger.model.NewLuggage;
+import io.swagger.model.NewLuggage;
+import io.swagger.model.Luggage;
 import io.swagger.service.LuggageService;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -44,7 +46,7 @@ public class LuggageApiController implements LuggageApi {
     }
 
     public ResponseEntity<List<Luggage>> luggageGet(@Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by status", schema = @Schema()) @Valid @RequestParam(value = "status", required = false) String status
-            , @Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by container ID", schema = @Schema()) @Valid @RequestParam(value = "container_id", required = false) String containerId
+            , @Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by container ID", schema = @Schema()) @Valid @RequestParam(value = "container_id", required = false) Long containerId
             , @Parameter(in = ParameterIn.QUERY, description = "Limit the number of results returned. Default is 10.", schema = @Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
             , @Parameter(in = ParameterIn.QUERY, description = "Offset the results returned for pagination", schema = @Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset
     ) {
@@ -70,10 +72,44 @@ public class LuggageApiController implements LuggageApi {
         return new ResponseEntity<Luggage>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> luggageIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to delete", required=true, schema=@Schema()) @PathVariable("luggage_id") String luggageId
+    public ResponseEntity<Void> luggageIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to delete", required=true, schema=@Schema()) @PathVariable("luggage_id") Long luggageId
     ) {
         String accept = request.getHeader("Accept");
         luggageService.deleteLuggage(luggageId);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
+
+    public ResponseEntity<Luggage> luggageIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to retrieve", required=true, schema=@Schema()) @PathVariable("list_id") Long luggageId
+    ) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+
+            return luggageService.getLuggageById(luggageId)
+                    .map(luggage -> new ResponseEntity<>(luggage, HttpStatus.OK))
+                    .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        }
+
+        return new ResponseEntity<Luggage>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<Luggage> luggageIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to update", required=true, schema=@Schema()) @PathVariable("list_id") Long luggageId
+            ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewLuggage body
+    ) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            Luggage updatedLuggage = new Luggage();
+            updatedLuggage.setDescription(body.getDescription());
+            updatedLuggage.setWeightKg(body.getWeightKg());
+            updatedLuggage.setStatus(body.getStatus());
+            updatedLuggage.setContainerId(body.getContainerId());
+            Luggage updated = luggageService.updateLuggage(luggageId, updatedLuggage);
+
+            return new ResponseEntity<>(updated, HttpStatus.OK);
+
+        }
+
+        return new ResponseEntity<Luggage>(HttpStatus.NOT_IMPLEMENTED);
+    }
 }
+
+

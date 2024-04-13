@@ -19,6 +19,7 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
 @Entity
+<<<<<<< Updated upstream
 public class CargoContainer   {
   @JsonProperty("container_id")
   @Id
@@ -60,10 +61,64 @@ public class CargoContainer   {
   @Schema(description = "")
   
     public String getContainerId() {
+=======
+@Table(name = "cargo_container")
+public class CargoContainer {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @JsonProperty( "container_id")
+  private Long  containerId;
+
+  @Column(name = "list_id")
+  private Long listId;
+
+  @Column(name = "description", columnDefinition = "text")
+  private String description;
+
+  @Column(name = "capacity")
+  private Integer capacity;
+
+  @Column(name = "damage")
+  private Boolean damage;
+
+
+  @Convert(converter = StatusConverter.class)
+  @Column(name = "status")
+  private Status status;
+
+  @Convert(converter = LockStatusConverter.class)
+  @Column(name = "lock_status")
+  private LockStatus lockStatus;
+
+
+  @Column(name = "lock_img")
+  private String lockImg;
+
+  @Column(name = "tag_img")
+  private String tagImg;
+
+  @Column(name = "probability")
+  private BigDecimal probability;
+
+  @Column(name = "tag")
+  private String tag;
+
+  // Getters and setters
+
+  public Long getListId() {
+    return listId;
+  }
+
+  public void setListId(Long listId) {
+    this.listId = listId;
+  }
+
+  public Long getContainerId() {
+>>>>>>> Stashed changes
     return containerId;
   }
 
-  public void setContainerId(String containerId) {
+  public void setContainerId(Long  containerId) {
     this.containerId = containerId;
   }
 
@@ -101,6 +156,7 @@ public class CargoContainer   {
     return capacityKg;
   }
 
+<<<<<<< Updated upstream
   public void setCapacityKg(Integer capacityKg) {
     this.capacityKg = capacityKg;
   }
@@ -117,6 +173,17 @@ public class CargoContainer   {
   @Schema(description = "")
   
     public String getStatus() {
+=======
+  public Boolean getDamage() {
+    return damage;
+  }
+
+  public void setDamage(Boolean damage) {
+    this.damage = damage;
+  }
+
+  public Status getStatus() {
+>>>>>>> Stashed changes
     return status;
   }
 

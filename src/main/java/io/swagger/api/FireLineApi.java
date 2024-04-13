@@ -38,51 +38,51 @@ import java.util.Map;
 public interface FireLineApi {
 
     @Operation(summary = "Get all fire line checks", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "List of fire line checks", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = FireLine.class)))) })
     @RequestMapping(value = "/fire-line",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<FireLine>> fireLineGet();
 
 
     @Operation(summary = "Delete a specific fire line check by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "204", description = "Fire line check deleted successfully") })
     @RequestMapping(value = "/fire-line/{id}",
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> fireLineIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to delete", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<Void> fireLineIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to delete", required=true, schema=@Schema()) @PathVariable("id") Long id
 );
 
 
     @Operation(summary = "Get a specific fire line check by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Fire line check details", content = @Content(mediaType = "application/json", schema = @Schema(implementation = FireLine.class))) })
     @RequestMapping(value = "/fire-line/{id}",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
-    ResponseEntity<FireLine> fireLineIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to retrieve", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<FireLine> fireLineIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to retrieve", required=true, schema=@Schema()) @PathVariable("id") Long id
 );
 
 
     @Operation(summary = "Update a specific fire line check by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Fire line check updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = FireLine.class))) })
     @RequestMapping(value = "/fire-line/{id}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
+        produces = { "application/json" },
+        consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<FireLine> fireLineIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to update", required=true, schema=@Schema()) @PathVariable("id") String id
+    ResponseEntity<FireLine> fireLineIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to update", required=true, schema=@Schema()) @PathVariable("id") Long id
 , @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewFireLine body
 );
 
 
     @Operation(summary = "Create a new fire line check", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Fire line check created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = FireLine.class))) })
     @RequestMapping(value = "/fire-line",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
+        produces = { "application/json" },
+        consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<FireLine> fireLinePost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewFireLine body
 );

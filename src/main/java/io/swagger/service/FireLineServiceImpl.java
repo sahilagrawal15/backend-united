@@ -23,7 +23,7 @@ public class FireLineServiceImpl implements FireLineService {
         return fireLineRepository.findAll();
     }
 
-    public Optional<FireLine> getFireLineById(String id) {
+    public Optional<FireLine> getFireLineById(Long id) {
         return fireLineRepository.findById(id);
     }
 
@@ -40,7 +40,7 @@ public class FireLineServiceImpl implements FireLineService {
         return fireLineRepository.save(newFireLine);
     }
 
-    public FireLine updateFireLine(String id, FireLine updatedFireLine) {
+    public FireLine updateFireLine(Long id, FireLine updatedFireLine) {
         if (fireLineRepository.existsById(id)) {
             updatedFireLine.setId(id);
             return fireLineRepository.save(updatedFireLine);
@@ -49,7 +49,7 @@ public class FireLineServiceImpl implements FireLineService {
         }
     }
 
-    public void deleteFireLine(String id) {
+    public void deleteFireLine(Long id) {
         fireLineRepository.deleteById(id);
     }
 }

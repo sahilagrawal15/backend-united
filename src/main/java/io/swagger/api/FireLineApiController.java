@@ -68,14 +68,14 @@ public class FireLineApiController implements FireLineApi {
         return new ResponseEntity<List<FireLine>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Void> fireLineIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to delete", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<Void> fireLineIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to delete", required=true, schema=@Schema()) @PathVariable("id") Long id
 ) {
         String accept = request.getHeader("Accept");
         fireLineService.deleteFireLine(id);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<FireLine> fireLineIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to retrieve", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<FireLine> fireLineIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to retrieve", required=true, schema=@Schema()) @PathVariable("id") Long id
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
@@ -87,7 +87,7 @@ public class FireLineApiController implements FireLineApi {
         return new ResponseEntity<FireLine>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<FireLine> fireLineIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to update", required=true, schema=@Schema()) @PathVariable("id") String id
+    public ResponseEntity<FireLine> fireLineIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the fire line check to update", required=true, schema=@Schema()) @PathVariable("id") Long id
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewFireLine body
 ) {
         String accept = request.getHeader("Accept");

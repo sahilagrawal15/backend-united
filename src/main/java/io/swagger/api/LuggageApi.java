@@ -7,6 +7,8 @@ package io.swagger.api;
 
 import io.swagger.model.Luggage;
 import io.swagger.model.NewLuggage;
+import io.swagger.model.Luggage;
+import io.swagger.model.NewRampChecklist;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -37,37 +39,55 @@ import java.util.Map;
 @Validated
 public interface LuggageApi {
 
-    @Operation(summary = "Get all luggage items", description = "", tags={  })
+    @Operation(summary = "Get all luggage items", description = "", tags = {})
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "List of luggage items", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Luggage.class)))) })
+            @ApiResponse(responseCode = "200", description = "List of luggage items", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Luggage.class))))})
     @RequestMapping(value = "/luggage",
-        produces = { "application/json" },
-        method = RequestMethod.GET)
-    ResponseEntity<List<Luggage>> luggageGet(@Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by status" ,schema=@Schema()) @Valid @RequestParam(value = "status", required = false) String status
-, @Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by container ID" ,schema=@Schema()) @Valid @RequestParam(value = "container_id", required = false) String containerId
-, @Parameter(in = ParameterIn.QUERY, description = "Limit the number of results returned. Default is 10." ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
-, @Parameter(in = ParameterIn.QUERY, description = "Offset the results returned for pagination" ,schema=@Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset
-);
-
-
-    @Operation(summary = "Create a new luggage item", description = "", tags={  })
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "201", description = "Luggage item created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Luggage.class))) })
-    @RequestMapping(value = "/luggage",
-        produces = { "application/json" },
-        consumes = { "application/json" },
-        method = RequestMethod.POST)
-    ResponseEntity<Luggage> luggagePost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewLuggage body
-);
-
-    @Operation(summary = "Delete a specific luggage by ID", description = "", tags={  })
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "luggage deleted successfully") })
-    @RequestMapping(value = "/luggage/{luggage_id}",
-            method = RequestMethod.DELETE)
-    ResponseEntity<Void> luggageIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to delete", required=true, schema=@Schema()) @PathVariable("luggage_id") String luggageId
+            produces = {"application/json"},
+            method = RequestMethod.GET)
+    ResponseEntity<List<Luggage>> luggageGet(@Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by status", schema = @Schema()) @Valid @RequestParam(value = "status", required = false) String status
+            , @Parameter(in = ParameterIn.QUERY, description = "Filter luggage items by container ID", schema = @Schema()) @Valid @RequestParam(value = "container_id", required = false) Long containerId
+            , @Parameter(in = ParameterIn.QUERY, description = "Limit the number of results returned. Default is 10.", schema = @Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
+            , @Parameter(in = ParameterIn.QUERY, description = "Offset the results returned for pagination", schema = @Schema()) @Valid @RequestParam(value = "offset", required = false) Integer offset
     );
 
 
-}
+    @Operation(summary = "Create a new luggage item", description = "", tags = {})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Luggage item created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Luggage.class)))})
+    @RequestMapping(value = "/luggage",
+            produces = {"application/json"},
+            consumes = {"application/json"},
+            method = RequestMethod.POST)
+    ResponseEntity<Luggage> luggagePost(@Parameter(in = ParameterIn.DEFAULT, description = "", required = true, schema = @Schema()) @Valid @RequestBody NewLuggage body
+    );
 
+    @Operation(summary = "Delete a specific luggage by ID", description = "", tags = {})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "luggage deleted successfully")})
+    @RequestMapping(value = "/luggage/{luggage_id}",
+            method = RequestMethod.DELETE)
+    ResponseEntity<Void> luggageIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to delete", required = true, schema = @Schema()) @PathVariable("luggage_id") Long luggageId
+    );
+
+    @Operation(summary = "Get a specific luggage by ID", description = "", tags = {})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "luggage details", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Luggage.class)))})
+    @RequestMapping(value = "/luggage/{luggage_id}",
+            produces = {"application/json"},
+            method = RequestMethod.GET)
+    ResponseEntity<Luggage> luggageIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to retrieve", required = true, schema = @Schema()) @PathVariable("luggage_id") Long luggageId
+    );
+
+
+    @Operation(summary = "Update a specific luggage by ID", description = "", tags = {})
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "luggage updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Luggage.class)))})
+    @RequestMapping(value = "/luggage/{luggage_id}",
+            produces = {"application/json"},
+            consumes = {"application/json"},
+            method = RequestMethod.PUT)
+    ResponseEntity<Luggage> luggageIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to update", required = true, schema = @Schema()) @PathVariable("luggage_id") Long luggageId
+            , @Parameter(in = ParameterIn.DEFAULT, description = "", required = true, schema = @Schema()) @Valid @RequestBody NewLuggage body
+    );
+}
