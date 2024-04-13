@@ -23,14 +23,16 @@ public class CargoContainerServiceImpl implements CargoContainerService {
         return cargoContainerRepository.findAll();
     }
 
-    public Optional<CargoContainer> getCargoContainerById(String id) {
+    public Optional<CargoContainer> getCargoContainerById(Long id) {
         return cargoContainerRepository.findById(id);
     }
 
     public CargoContainer createCargoContainer(NewCargoContainer cargoContainer) {
         CargoContainer newCargoContainer = new CargoContainer();
+        newCargoContainer.setListId(cargoContainer.getListId());
         newCargoContainer.setDescription(cargoContainer.getDescription());
         newCargoContainer.setCapacity(cargoContainer.getCapacity());
+        newCargoContainer.setDamage(cargoContainer.getDamage());
         newCargoContainer.setStatus(cargoContainer.getStatus());
         newCargoContainer.setLockStatus(cargoContainer.getLockStatus());
         newCargoContainer.setLockImg(cargoContainer.getLockImg());
@@ -42,7 +44,7 @@ public class CargoContainerServiceImpl implements CargoContainerService {
         return cargoContainerRepository.save(newCargoContainer);
     }
 
-    public CargoContainer updateCargoContainer(String id, CargoContainer updatedCargoContainer) {
+    public CargoContainer updateCargoContainer(Long id, CargoContainer updatedCargoContainer) {
         // Check if the cargo container exists
         if (cargoContainerRepository.existsById(id)) {
             // Set the ID for the updated cargo container
@@ -55,7 +57,7 @@ public class CargoContainerServiceImpl implements CargoContainerService {
         }
     }
 
-    public void deleteCargoContainer(String id) {
+    public void deleteCargoContainer(Long id) {
         cargoContainerRepository.deleteById(id);
     }
 }

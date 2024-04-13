@@ -6,8 +6,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -18,12 +20,13 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
 @Entity
+@Table(name = "employee")
 public class Employee {
   @JsonProperty("employee_id")
   @Id
   private String employeeId = null;
 
-  @JsonProperty("password")
+  @Column(name = "password")
   private String password = null;
 
   public Employee employeeId(String employeeId) {
@@ -36,7 +39,7 @@ public class Employee {
    * @return employeeId
    **/
   @Schema(description = "")
-  
+
     public String getEmployeeId() {
     return employeeId;
   }
@@ -55,7 +58,7 @@ public class Employee {
    * @return password
    **/
   @Schema(description = "")
-  
+
     public String getPassword() {
     return password;
   }
@@ -87,7 +90,7 @@ public class Employee {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Employee {\n");
-    
+
     sb.append("    employeeId: ").append(toIndentedString(employeeId)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");

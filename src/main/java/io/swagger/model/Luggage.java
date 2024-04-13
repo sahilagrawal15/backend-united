@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
+
 /**
  * Luggage
  */
@@ -17,27 +18,27 @@ import javax.validation.constraints.*;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
 @Entity
-public class Luggage   {
+@Table(name = "luggage")
+public class Luggage  {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("luggage_id")
-  @Column(name = "luggage_id")
-  private String luggageId = null;
+  private Long luggageId = null;
 
-  @JsonProperty("description")
+  @Column(name = "description")
   private String description = null;
 
-  @JsonProperty("weight_kg")
+  @Column(name = "weight_kg")
   private Integer weightKg = null;
 
-  @JsonProperty("status")
+  @Column(name = "status")
   private String status = null;
 
-  @JsonProperty("container_id")
+  @Column(name = "container_id")
   private String containerId = null;
 
-  public Luggage luggageId(String luggageId) {
+  public Luggage luggageId(Long luggageId) {
     this.luggageId = luggageId;
     return this;
   }
@@ -47,12 +48,12 @@ public class Luggage   {
    * @return luggageId
    **/
   @Schema(description = "")
-  
-    public String getLuggageId() {
+
+    public Long getLuggageId() {
     return luggageId;
   }
 
-  public void setLuggageId(String luggageId) {
+  public void setLuggageId(Long luggageId) {
     this.luggageId = luggageId;
   }
 
@@ -66,7 +67,7 @@ public class Luggage   {
    * @return description
    **/
   @Schema(description = "")
-  
+
     public String getDescription() {
     return description;
   }
@@ -85,7 +86,7 @@ public class Luggage   {
    * @return weightKg
    **/
   @Schema(description = "")
-  
+
     public Integer getWeightKg() {
     return weightKg;
   }
@@ -104,7 +105,7 @@ public class Luggage   {
    * @return status
    **/
   @Schema(description = "")
-  
+
     public String getStatus() {
     return status;
   }
@@ -123,7 +124,7 @@ public class Luggage   {
    * @return containerId
    **/
   @Schema(description = "")
-  
+
     public String getContainerId() {
     return containerId;
   }
@@ -158,7 +159,7 @@ public class Luggage   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Luggage {\n");
-    
+
     sb.append("    luggageId: ").append(toIndentedString(luggageId)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    weightKg: ").append(toIndentedString(weightKg)).append("\n");

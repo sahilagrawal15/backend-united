@@ -13,6 +13,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
+
 /**
  * CargoContainer
  */
@@ -25,43 +26,58 @@ public class CargoContainer {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("container_id")
-  private String containerId;
+  private Long containerId;
 
-  @Column(columnDefinition = "text") // Define the length for VARCHAR
-  @JsonProperty("description")
+  @Column(name = "list_id")
+  private Long listId;
+
+  @Column(name = "description", columnDefinition = "text")
   private String description;
 
-  @JsonProperty("capacity")
+  @Column(name = "capacity")
   private Integer capacity;
 
+  @Column(name = "damage")
+  private Boolean damage;
+
+
   @Convert(converter = StatusConverter.class)
-  @JsonProperty("status")
+  @Column(name = "status")
   private Status status;
 
   @Convert(converter = LockStatusConverter.class)
-  @JsonProperty("lock_status")
+  @Column(name = "lock_status")
   private LockStatus lockStatus;
 
 
-  @JsonProperty("lock_img")
+  @Column(name = "lock_img")
   private String lockImg;
 
-  @JsonProperty("tag_img")
+  @Column(name = "tag_img")
   private String tagImg;
 
-  @JsonProperty("probability")
+  @Column(name = "probability")
   private BigDecimal probability;
 
-  @JsonProperty("tag")
+  @Column(name = "tag")
   private String tag;
 
   // Getters and setters
-  public String getContainerId() {
+
+  public Long getContainerId() {
     return containerId;
   }
 
-  public void setContainerId(String containerId) {
+  public void setContainerId(Long containerId) {
     this.containerId = containerId;
+  }
+
+  public Long getListId() {
+    return listId;
+  }
+
+  public void setListId(Long listId) {
+    this.listId = listId;
   }
 
   public String getDescription() {
@@ -78,6 +94,14 @@ public class CargoContainer {
 
   public void setCapacity(Integer capacity) {
     this.capacity = capacity;
+  }
+
+  public Boolean getDamage() {
+    return damage;
+  }
+
+  public void setDamage(Boolean damage) {
+    this.damage = damage;
   }
 
   public Status getStatus() {
@@ -128,8 +152,3 @@ public class CargoContainer {
     this.tag = tag;
   }
 }
-
-
-
-
-

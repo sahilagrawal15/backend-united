@@ -90,7 +90,7 @@ CREATE TABLE `fireline` (
 --
 
 CREATE TABLE `luggage` (
-  `luggage_id` varchar(255) NOT NULL,
+  `luggage_id` int(255) NOT NULL,
   `description` text NOT NULL,
   `weight` int(10) UNSIGNED NOT NULL,
   `status` enum('loaded','unloaded','not loaded','') NOT NULL,
@@ -181,6 +181,13 @@ ALTER TABLE `checklist_team`
 --
 ALTER TABLE `fireline`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `luggage`
+--
+ALTER TABLE `luggage`
+    MODIFY `luggage_id` int(255) NOT NULL AUTO_INCREMENT;
+
 
 --
 -- Constraints for dumped tables

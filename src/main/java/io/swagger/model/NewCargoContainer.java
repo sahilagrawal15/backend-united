@@ -21,17 +21,49 @@ import java.math.BigDecimal;
 
 public class NewCargoContainer {
 
-  private String description;
-  private Integer capacity;
-  private Status status;
-  private LockStatus lockStatus;
-  private String lockImg;
-  private String tagImg;
-  private BigDecimal probability;
-  private String tag;
+  @JsonProperty("list_id")
+  private Long listId;
 
+  @JsonProperty("description")
+  private String description;
+
+  @JsonProperty("capacity")
+  private Integer capacity;
+
+  @JsonProperty("damage")
+  private Boolean damage;
+
+
+  @Convert(converter = StatusConverter.class)
+  @JsonProperty("status")
+  private Status status;
+
+  @Convert(converter = LockStatusConverter.class)
+  @JsonProperty("lock_status")
+  private LockStatus lockStatus;
+
+
+  @JsonProperty("lock_img")
+  private String lockImg;
+
+  @JsonProperty("tag_img")
+  private String tagImg;
+
+  @JsonProperty("probability")
+  private BigDecimal probability;
+
+  @JsonProperty("tag")
+  private String tag;
   // Constructor
 
+
+  public Long getListId() {
+    return listId;
+  }
+
+  public void setListId(Long listId) {
+    this.listId = listId;
+  }
 
   public String getDescription() {
     return description;
@@ -47,6 +79,14 @@ public class NewCargoContainer {
 
   public void setCapacity(Integer capacity) {
     this.capacity = capacity;
+  }
+
+  public Boolean getDamage() {
+    return damage;
+  }
+
+  public void setDamage(Boolean damage) {
+    this.damage = damage;
   }
 
   public Status getStatus() {
@@ -97,9 +137,11 @@ public class NewCargoContainer {
     this.tag = tag;
   }
 
-  public NewCargoContainer(String description, Integer capacity, Status status, LockStatus lockStatus, String lockImg, String tagImg, BigDecimal probability, String tag) {
+  public NewCargoContainer(Long listId, String description, Integer capacity, Boolean damage, Status status, LockStatus lockStatus, String lockImg, String tagImg, BigDecimal probability, String tag) {
+    this.listId = listId;
     this.description = description;
     this.capacity = capacity;
+    this.damage = damage;
     this.status = status;
     this.lockStatus = lockStatus;
     this.lockImg = lockImg;

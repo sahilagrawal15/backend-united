@@ -12,10 +12,10 @@ public interface FireLineService {
 
     FireLine createFireLine(NewFireLine cargoContainer);
 
-    Optional<FireLine> getFireLineById(String id);
+    Optional<FireLine> getFireLineById(Long id);
 
-    FireLine updateFireLine(String id, FireLine updatedFireLine);
+    FireLine updateFireLine(Long id, FireLine updatedFireLine);
 
-    void deleteFireLine(String id);
+    void deleteFireLine(Long id);
 }
 

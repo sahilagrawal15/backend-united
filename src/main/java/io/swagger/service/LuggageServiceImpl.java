@@ -34,11 +34,11 @@ public class LuggageServiceImpl implements LuggageService {
         return luggageRepository.save(newLuggage);
     }
 
-    public Optional<Luggage> getLuggageById(String id) {
+    public Optional<Luggage> getLuggageById(Long id) {
         return luggageRepository.findById(id);
     }
 
-    public Luggage updateLuggage(String id, Luggage updatedLuggage) {
+    public Luggage updateLuggage(Long id, Luggage updatedLuggage) {
         // Check if the luggage exists
         if (luggageRepository.existsById(id)) {
             // Set the ID for the updated luggage
@@ -51,7 +51,7 @@ public class LuggageServiceImpl implements LuggageService {
         }
     }
 
-    public void deleteLuggage(String id) {
+    public void deleteLuggage(Long id) {
         luggageRepository.deleteById(id);
     }
 }

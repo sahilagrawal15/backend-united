@@ -38,41 +38,41 @@ import java.util.Map;
 public interface CargoContainersApi {
 
     @Operation(summary = "Delete a specific cargo container by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "204", description = "Cargo container deleted successfully") })
     @RequestMapping(value = "/cargo-containers/{container_id}",
         method = RequestMethod.DELETE)
-    ResponseEntity<Void> cargoContainersContainerIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to delete", required=true, schema=@Schema()) @PathVariable("container_id") String containerId
+    ResponseEntity<Void> cargoContainersContainerIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to delete", required=true, schema=@Schema()) @PathVariable("container_id") Long containerId
 );
 
 
     @Operation(summary = "Get a specific cargo container by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Cargo container details", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CargoContainer.class))) })
     @RequestMapping(value = "/cargo-containers/{container_id}",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
-    ResponseEntity<CargoContainer> cargoContainersContainerIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to retrieve", required=true, schema=@Schema()) @PathVariable("container_id") String containerId
+    ResponseEntity<CargoContainer> cargoContainersContainerIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to retrieve", required=true, schema=@Schema()) @PathVariable("container_id") Long containerId
 );
 
 
     @Operation(summary = "Update a specific cargo container by ID", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "Cargo container updated successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CargoContainer.class))) })
     @RequestMapping(value = "/cargo-containers/{container_id}",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
+        produces = { "application/json" },
+        consumes = { "application/json" },
         method = RequestMethod.PUT)
-    ResponseEntity<CargoContainer> cargoContainersContainerIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to update", required=true, schema=@Schema()) @PathVariable("container_id") String containerId
+    ResponseEntity<CargoContainer> cargoContainersContainerIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to update", required=true, schema=@Schema()) @PathVariable("container_id") Long containerId
 , @Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewCargoContainer body
 );
 
 
     @Operation(summary = "Get all cargo containers", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "List of cargo containers", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CargoContainer.class)))) })
     @RequestMapping(value = "/cargo-containers",
-        produces = { "application/json" }, 
+        produces = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<CargoContainer>> cargoContainersGet(@Parameter(in = ParameterIn.QUERY, description = "Filter cargo containers by status" ,schema=@Schema()) @Valid @RequestParam(value = "status", required = false) String status
 , @Parameter(in = ParameterIn.QUERY, description = "Limit the number of results returned. Default is 10." ,schema=@Schema()) @Valid @RequestParam(value = "limit", required = false) Integer limit
@@ -81,11 +81,11 @@ public interface CargoContainersApi {
 
 
     @Operation(summary = "Create a new cargo container", description = "", tags={  })
-    @ApiResponses(value = { 
+    @ApiResponses(value = {
         @ApiResponse(responseCode = "201", description = "Cargo container created successfully", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CargoContainer.class))) })
     @RequestMapping(value = "/cargo-containers",
-        produces = { "application/json" }, 
-        consumes = { "application/json" }, 
+        produces = { "application/json" },
+        consumes = { "application/json" },
         method = RequestMethod.POST)
     ResponseEntity<CargoContainer> cargoContainersPost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewCargoContainer body
 );

@@ -35,9 +35,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 @RestController
 public class CargoContainersApiController implements CargoContainersApi {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CargoContainersApiController.class);
+
+
 
     @Autowired
     private final CargoContainerService cargoContainerService;
@@ -55,14 +61,14 @@ public class CargoContainersApiController implements CargoContainersApi {
         this.request = request;
     }
 
-    public ResponseEntity<Void> cargoContainersContainerIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to delete", required=true, schema=@Schema()) @PathVariable("container_id") String containerId
+    public ResponseEntity<Void> cargoContainersContainerIdDelete(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to delete", required=true, schema=@Schema()) @PathVariable("container_id") Long containerId
 ) {
         String accept = request.getHeader("Accept");
         cargoContainerService.deleteCargoContainer(containerId);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<CargoContainer> cargoContainersContainerIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to retrieve", required=true, schema=@Schema()) @PathVariable("container_id") String containerId
+    public ResponseEntity<CargoContainer> cargoContainersContainerIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to retrieve", required=true, schema=@Schema()) @PathVariable("container_id") Long containerId
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
@@ -74,14 +80,20 @@ public class CargoContainersApiController implements CargoContainersApi {
         return new ResponseEntity<CargoContainer>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<CargoContainer> cargoContainersContainerIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to update", required=true, schema=@Schema()) @PathVariable("container_id") String containerId
+    public ResponseEntity<CargoContainer> cargoContainersContainerIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the cargo container to update", required=true, schema=@Schema()) @PathVariable("container_id") Long containerId
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewCargoContainer body
 ) {
         String accept = request.getHeader("Accept");
+//        LOGGER.debug("Saving CargoContainer with list_id: {}", body.getListId());
+//        LOGGER.debug("body: {}", body);
         if (accept != null && accept.contains("application/json")) {
+
             CargoContainer updatedCargoContainer = new CargoContainer();
+            updatedCargoContainer.setListId(body.getListId());
             updatedCargoContainer.setDescription(body.getDescription());
+            updatedCargoContainer.setCapacity(body.getCapacity());
             updatedCargoContainer.setStatus(body.getStatus());
+            updatedCargoContainer.setDamage(body.getDamage());
             updatedCargoContainer.setLockStatus(body.getLockStatus());
             updatedCargoContainer.setLockImg(body.getLockImg());
             updatedCargoContainer.setTagImg(body.getTagImg());

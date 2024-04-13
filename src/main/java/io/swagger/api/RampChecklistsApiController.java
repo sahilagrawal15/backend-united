@@ -121,6 +121,7 @@ public class RampChecklistsApiController implements RampChecklistsApi {
     public ResponseEntity<RampChecklist> rampChecklistsPost(@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewRampChecklist body
 ) {
         String accept = request.getHeader("Accept");
+
         if (accept != null && accept.contains("application/json")) {
 
                 RampChecklist createdChecklist = rampChecklistService.createRampChecklist(body);
