@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface RampChecklistRepository extends JpaRepository<RampChecklist, String> {
+public interface RampChecklistRepository extends JpaRepository<RampChecklist, Long> {
 }
 
