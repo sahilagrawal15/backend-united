@@ -3,9 +3,14 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.service.LockStatusConverter;
+import io.swagger.service.StatusConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.math.BigDecimal;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -16,17 +21,39 @@ import java.math.BigDecimal;
 
 public class NewCargoContainer {
 
+  @JsonProperty("list_id")
   private Long listId;
-  private String description;
-  private Integer capacity;
-  private Boolean damage;
-  private Status status;
-  private LockStatus lockStatus;
-  private String lockImg;
-  private String tagImg;
-  private BigDecimal probability;
-  private String tag;
 
+  @JsonProperty("description")
+  private String description;
+
+  @JsonProperty("capacity")
+  private Integer capacity;
+
+  @JsonProperty("damage")
+  private Boolean damage;
+
+
+  @Convert(converter = StatusConverter.class)
+  @JsonProperty("status")
+  private Status status;
+
+  @Convert(converter = LockStatusConverter.class)
+  @JsonProperty("lock_status")
+  private LockStatus lockStatus;
+
+
+  @JsonProperty("lock_img")
+  private String lockImg;
+
+  @JsonProperty("tag_img")
+  private String tagImg;
+
+  @JsonProperty("probability")
+  private BigDecimal probability;
+
+  @JsonProperty("tag")
+  private String tag;
   // Constructor
 
 

@@ -186,7 +186,7 @@ ALTER TABLE `fireline`
 -- AUTO_INCREMENT for table `luggage`
 --
 ALTER TABLE `luggage`
-MODIFY `luggage_id` int(255) NOT NULL AUTO_INCREMENT;
+    MODIFY `luggage_id` int(255) NOT NULL AUTO_INCREMENT;
 
 
 --
