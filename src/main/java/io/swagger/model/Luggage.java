@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.Column;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -14,20 +16,12 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2024-04-01T19:16:46.028037-04:00[America/New_York]")
 
-<<<<<<< Updated upstream
-=======
 @Entity
 @Table(name = "luggage")
 public class Luggage   {
->>>>>>> Stashed changes
-
-public class Luggage   {
   @JsonProperty("luggage_id")
-<<<<<<< Updated upstream
-  private String luggageId = null;
-=======
+
   private Long luggageId = null;
->>>>>>> Stashed changes
 
   @Column(name = "description")
   private String description = null;

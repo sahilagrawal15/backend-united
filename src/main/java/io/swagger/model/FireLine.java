@@ -22,15 +22,10 @@ import javax.validation.constraints.*;
 
 @Table(name = "fire_line")
 public class FireLine   {
-<<<<<<< Updated upstream
-  @JsonProperty("id")
-  private String id = null;
-=======
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("id")
   private Long id = null;
->>>>>>> Stashed changes
 
   @Column(name = "list_id")
   private Long listId = null;
