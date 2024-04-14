@@ -79,7 +79,7 @@ public class LuggageApiController implements LuggageApi {
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
-    public ResponseEntity<Luggage> luggageIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to retrieve", required=true, schema=@Schema()) @PathVariable("list_id") Long luggageId
+    public ResponseEntity<Luggage> luggageIdGet(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to retrieve", required=true, schema=@Schema()) @PathVariable("luggage_id") Long luggageId
     ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
@@ -92,7 +92,7 @@ public class LuggageApiController implements LuggageApi {
         return new ResponseEntity<Luggage>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<Luggage> luggageIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to update", required=true, schema=@Schema()) @PathVariable("list_id") Long luggageId
+    public ResponseEntity<Luggage> luggageIdPut(@Parameter(in = ParameterIn.PATH, description = "ID of the luggage to update", required=true, schema=@Schema()) @PathVariable("luggage_id") Long luggageId
             ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewLuggage body
     ) {
         String accept = request.getHeader("Accept");

@@ -84,8 +84,6 @@ public class CargoContainersApiController implements CargoContainersApi {
 ,@Parameter(in = ParameterIn.DEFAULT, description = "", required=true, schema=@Schema()) @Valid @RequestBody NewCargoContainer body
 ) {
         String accept = request.getHeader("Accept");
-//        LOGGER.debug("Saving CargoContainer with list_id: {}", body.getListId());
-//        LOGGER.debug("body: {}", body);
         if (accept != null && accept.contains("application/json")) {
 
             CargoContainer updatedCargoContainer = new CargoContainer();
