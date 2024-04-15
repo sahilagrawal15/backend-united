@@ -22,7 +22,7 @@ import java.math.BigDecimal;
 public class NewCargoContainer {
 
   @JsonProperty("list_id")
-  private Long listId;
+  private RampChecklist listId;
 
   @JsonProperty("description")
   private String description;
@@ -57,11 +57,11 @@ public class NewCargoContainer {
   // Constructor
 
 
-  public Long getListId() {
+  public RampChecklist getListId() {
     return listId;
   }
 
-  public void setListId(Long listId) {
+  public void setListId(RampChecklist listId) {
     this.listId = listId;
   }
 
@@ -137,7 +137,7 @@ public class NewCargoContainer {
     this.tag = tag;
   }
 
-  public NewCargoContainer(Long listId, String description, Integer capacity, Boolean damage, Status status, LockStatus lockStatus, String lockImg, String tagImg, BigDecimal probability, String tag) {
+  public NewCargoContainer(RampChecklist listId, String description, Integer capacity, Boolean damage, Status status, LockStatus lockStatus, String lockImg, String tagImg, BigDecimal probability, String tag) {
     this.listId = listId;
     this.description = description;
     this.capacity = capacity;

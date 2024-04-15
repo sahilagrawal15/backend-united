@@ -3,6 +3,8 @@ package io.swagger.api;
 import io.swagger.model.Employee;
 import io.swagger.model.NewEmployee;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.repository.EmployeeRepository;
+import io.swagger.service.EmployeeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -14,6 +16,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,6 +43,9 @@ public class EmployeesApiController implements EmployeesApi {
     private static final Logger log = LoggerFactory.getLogger(EmployeesApiController.class);
 
     private final ObjectMapper objectMapper;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     private final HttpServletRequest request;
 
@@ -104,12 +110,9 @@ public class EmployeesApiController implements EmployeesApi {
 ) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<Employee>(objectMapper.readValue("{\n  \"password\" : \"password\",\n  \"employee_id\" : \"employee_id\"\n}", Employee.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<Employee>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            Employee employee = employeeService.saveEmployee(body);
+            return new ResponseEntity<>(employee, HttpStatus.CREATED);
+
         }
 
         return new ResponseEntity<Employee>(HttpStatus.NOT_IMPLEMENTED);

@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
 
 public class NewFireLine   {
   @JsonProperty("list_id")
-  private Long listId = null;
+  private RampChecklist listId = null;
 
   @JsonProperty("fireline_status")
   private Boolean firelineStatus = null;
@@ -35,7 +35,7 @@ public class NewFireLine   {
   @JsonProperty("tag")
   private String tag = null;
 
-  public NewFireLine listId(Long listId) {
+  public NewFireLine listId(RampChecklist listId) {
     this.listId = listId;
     return this;
   }
@@ -47,11 +47,11 @@ public class NewFireLine   {
   @Schema(required = true, description = "")
       @NotNull
 
-    public Long getlistId() {
+    public RampChecklist getlistId() {
     return listId;
   }
 
-  public void setlistId(Long listId) {
+  public void setlistId(RampChecklist listId) {
     this.listId = listId;
   }
 

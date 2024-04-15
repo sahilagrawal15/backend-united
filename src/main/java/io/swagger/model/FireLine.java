@@ -26,8 +26,9 @@ public class FireLine   {
   @JsonProperty("id")
   private Long id = null;
 
-  @Column(name = "list_id")
-  private Long listId = null;
+  @ManyToOne
+  @JoinColumn(name = "list_id", referencedColumnName = "list_id")
+  private RampChecklist listId = null;
 
   @Column(name = "fireline_status")
   private Boolean firelineStatus = null;
@@ -63,7 +64,7 @@ public class FireLine   {
     this.id = id;
   }
 
-  public FireLine listId(Long listId) {
+  public FireLine listId(RampChecklist listId) {
     this.listId = listId;
     return this;
   }
@@ -75,11 +76,11 @@ public class FireLine   {
   @Schema(required = true, description = "")
       @NotNull
 
-    public Long getlistId() {
+    public RampChecklist getlistId() {
     return listId;
   }
 
-  public void setlistId(Long listId) {
+  public void setlistId(RampChecklist listId) {
     this.listId = listId;
   }
 

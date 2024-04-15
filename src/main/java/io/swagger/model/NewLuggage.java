@@ -26,7 +26,7 @@ public class NewLuggage   {
   private String status = null;
 
   @JsonProperty("container_id")
-  private String containerId = null;
+  private CargoContainer containerId = null;
 
   public NewLuggage description(String description) {
     this.description = description;
@@ -85,7 +85,7 @@ public class NewLuggage   {
     this.status = status;
   }
 
-  public NewLuggage containerId(String containerId) {
+  public NewLuggage containerId(CargoContainer containerId) {
     this.containerId = containerId;
     return this;
   }
@@ -96,11 +96,11 @@ public class NewLuggage   {
    **/
   @Schema(description = "")
   
-    public String getContainerId() {
+    public CargoContainer getContainerId() {
     return containerId;
   }
 
-  public void setContainerId(String containerId) {
+  public void setContainerId(CargoContainer containerId) {
     this.containerId = containerId;
   }
 

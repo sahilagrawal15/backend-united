@@ -35,8 +35,9 @@ public class Luggage  {
   @Column(name = "status")
   private String status = null;
 
-  @Column(name = "container_id")
-  private String containerId = null;
+  @ManyToOne
+  @JoinColumn(name = "container_id", referencedColumnName = "container_id")
+  private CargoContainer containerId = null;
 
   public Luggage luggageId(Long luggageId) {
     this.luggageId = luggageId;
@@ -114,7 +115,7 @@ public class Luggage  {
     this.status = status;
   }
 
-  public Luggage containerId(String containerId) {
+  public Luggage containerId(CargoContainer containerId) {
     this.containerId = containerId;
     return this;
   }
@@ -125,11 +126,11 @@ public class Luggage  {
    **/
   @Schema(description = "")
 
-    public String getContainerId() {
+    public CargoContainer getContainerId() {
     return containerId;
   }
 
-  public void setContainerId(String containerId) {
+  public void setContainerId(CargoContainer containerId) {
     this.containerId = containerId;
   }
 

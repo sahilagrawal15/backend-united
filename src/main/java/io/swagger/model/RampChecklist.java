@@ -24,6 +24,7 @@ public class RampChecklist {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("list_id")
+  @Column(name = "list_id")
   private Long listId = null;
 
   @Column(name = "date")

@@ -24,6 +24,7 @@ import javax.validation.constraints.*;
 public class Employee {
   @JsonProperty("employee_id")
   @Id
+  @Column(name = "employee_id")
   private String employeeId = null;
 
   @Column(name = "password")

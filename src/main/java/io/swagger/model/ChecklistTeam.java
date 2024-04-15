@@ -19,11 +19,13 @@ public class ChecklistTeam   {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id = null;
 
-    @Column(name = "employee_id")
-    private String employeeId = null;
+    @ManyToOne
+    @JoinColumn(name = "employee_id", referencedColumnName = "employee_id")
+    private Employee employee;
 
-    @Column(name = "list_id")
-    private Long listId = null;
+    @ManyToOne
+    @JoinColumn(name = "list_id", referencedColumnName = "list_id")
+    private RampChecklist listId;
 
     public Long getId() {
         return id;
@@ -33,19 +35,19 @@ public class ChecklistTeam   {
         this.id = id;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public Employee getEmployeeId() {
+        return employee;
     }
 
-    public void setEmployeeId(String employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployeeId(Employee employee) {
+        this.employee = employee;
     }
 
-    public Long getListId() {
+    public RampChecklist getListId() {
         return listId;
     }
 
-    public void setListId(Long listId) {
+    public void setListId(RampChecklist listId) {
         this.listId = listId;
     }
 
@@ -59,20 +61,20 @@ public class ChecklistTeam   {
         }
         ChecklistTeam checklistTeam = (ChecklistTeam) o;
         return Objects.equals(this.id, checklistTeam.id) &&
-                Objects.equals(this.employeeId, checklistTeam.employeeId) &&
+                Objects.equals(this.employee, checklistTeam.employee) &&
                 Objects.equals(this.listId, checklistTeam.listId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, employeeId, listId);
+        return Objects.hash(id, employee, listId);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("class ChecklistTeam {\n");
-        sb.append("    employeeId: ").append(toIndentedString(employeeId)).append("\n");
+        sb.append("    employeeId: ").append(toIndentedString(employee)).append("\n");
         sb.append("    listId: ").append(toIndentedString(listId)).append("\n");
         sb.append("}");
         return sb.toString();

@@ -16,12 +16,23 @@ import javax.validation.constraints.*;
 
 
 public class NewEmployee   {
+
+  @JsonProperty("employeeId")
+  private String employeeId;
   @JsonProperty("password")
   private String password = null;
 
   public NewEmployee password(String password) {
     this.password = password;
     return this;
+  }
+
+  public String getEmployeeId() {
+    return employeeId;
+  }
+
+  public void setEmployeeId(String employeeId) {
+    this.employeeId = employeeId;
   }
 
   /**
@@ -41,40 +52,15 @@ public class NewEmployee   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    NewEmployee newEmployee = (NewEmployee) o;
-    return Objects.equals(this.password, newEmployee.password);
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    NewEmployee that = (NewEmployee) o;
+    return Objects.equals(employeeId, that.employeeId) && Objects.equals(password, that.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(password);
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class NewEmployee {\n");
-    
-    sb.append("    password: ").append(toIndentedString(password)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return Objects.hash(employeeId, password);
   }
 }

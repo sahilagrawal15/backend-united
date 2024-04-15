@@ -18,10 +18,10 @@ public class NewChecklistTeam {
     private Long id;
 
     @JsonProperty("employee_id")
-    private String employeeId;
+    private Employee employeeId;
 
     @JsonProperty("list_id")
-    private Long listId;
+    private RampChecklist listId;
 
     public Long getId() {
         return id;
@@ -31,19 +31,19 @@ public class NewChecklistTeam {
         this.id = id;
     }
 
-    public String getEmployeeId() {
+    public Employee getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(Employee employeeId) {
         this.employeeId = employeeId;
     }
 
-    public Long getListId() {
+    public RampChecklist getListId() {
         return listId;
     }
 
-    public void setListId(Long listId) {
+    public void setListId(RampChecklist listId) {
         this.listId = listId;
     }
 

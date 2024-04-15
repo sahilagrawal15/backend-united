@@ -26,10 +26,12 @@ public class CargoContainer {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @JsonProperty("container_id")
+  @Column(name = "container_id")
   private Long containerId;
 
-  @Column(name = "list_id")
-  private Long listId;
+  @ManyToOne
+  @JoinColumn(name = "list_id", referencedColumnName = "list_id")
+  private RampChecklist listId;
 
   @Column(name = "description", columnDefinition = "text")
   private String description;
@@ -72,11 +74,11 @@ public class CargoContainer {
     this.containerId = containerId;
   }
 
-  public Long getListId() {
+  public RampChecklist getListId() {
     return listId;
   }
 
-  public void setListId(Long listId) {
+  public void setListId(RampChecklist listId) {
     this.listId = listId;
   }
 
