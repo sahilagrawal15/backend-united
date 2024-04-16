@@ -1,0 +1,35 @@
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    exclude:
+      - src/main/resources/application.properties
+      - src/main/java/io/swagger/auth/DatabaseConfig.java
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+-task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
+    goals: 'package'
+    options: '-DskipTests'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: '1.11'
+    mavenVersionOption: 'Default'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+    Overwrite: true
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'container'
