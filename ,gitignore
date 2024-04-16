@@ -1,0 +1,2 @@
+src/main/resources/application.properties
+src/main/java/io/swagger/auth/DatabaseConfig.java
